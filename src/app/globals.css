@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -10,33 +12,215 @@
   }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+
+body{
+  /* font-size: 1.6rem; */
+  font-family: Iransans;
+  background-color: #ffe4012b;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
+a{
   text-decoration: none;
+  transition: all ease 300ms;
+  color: #808080;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+footer a{
+  color: #bdbdbd;
+}
+
+
+
+a:hover{
+  color: #43d7ff;
+}
+
+
+input , input:focus , select , select:focus{
+  outline: none;
+}
+
+button{
+  transition: all ease 300ms;
+}
+
+
+/* <====== end default ======> */
+
+/* <======= start helpers ======> */
+
+.flex-between-center{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-column-center-start{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+
+.app-icon{
+  color: var(--primary-color);
+}
+
+.section-title{
+  text-align: center;
+  font-size: 5rem;
+  color: var(--primary-color);
+  margin-bottom: 3rem;
+  font-weight: 800;
+}
+
+.section-btn {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.section-btn__link {
+  border-radius: var(--border-radius);
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  padding: 0 1rem;
+}
+
+.section-btn__link:hover {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+}
+
+#open-menu-checkbox-id:checked ~ #mobile-menu{
+  right: 0 !important;
+}
+
+footer ul li{
+  margin: 5px 0;
+}
+
+.auth-pages ~ header{
+  display: none;
+}
+
+.formErrorMsg{
+  color : #d80909;
+  font-size: 10px;
+}
+
+.max-w-340{
+  max-width: 340px;
+}
+
+/* <====== end helpers ======> */
+
+/* <====== start article styles ======> */
+#article-info h1,
+#article-info h2,
+#article-info h3,
+#article-info h4,
+#article-info h5,
+#article-info h6{
+    color: #166d91;
+    font-weight: bold;
+    margin-bottom: 7px;
+    margin-top: 10px;
+}
+
+#article-info h1{
+    font-size: 24px;
+}
+
+#article-info h2{
+    font-size: 20px;
+}
+
+#article-info h3{
+    font-size: 18px;
+}
+
+#article-info h4,
+#article-info h5,
+#article-info h6{
+    font-size: 16px;
+}
+
+#article-info p{
+    font-size: 16px;
+    color: #808080;
+    text-align: justify;
+}
+
+#article-info img{
+    width: 100%;
+    border-radius: 15px;
+    margin: 10px 0;
+    border: 3px solid #166d91;
+}
+
+@media (max-width : 640px) {
+    #article-info h1{
+        font-size: 20px;
+    }
+    
+    #article-info h2{
+        font-size: 18px;
+    }
+    
+    #article-info h3{
+        font-size: 16px;
+    }
+    
+    #article-info h4,
+    #article-info h5,
+    #article-info h6{
+        font-size: 14px;
+    }
+    
+    #article-info p{
+        font-size: 14px;
+    }    
+}
+
+/* <====== end article styles ======> */
+
+/* <======= tailwind css ======> */
+@layer base {
+  @font-face {
+      font-family: Iransans;
+      src: url('./../../public/fonts/IRANSans_UltraLight.ttf') format('truetype');
+      font-weight: 100;
+      font-display: swap;
+  }
+
+  @font-face {
+      font-family: Iransans;
+      src: url('./../../public/fonts/IRANSans_Light.ttf') format('truetype');
+      font-weight: 300;
+      font-display: swap;
+  }
+
+  @font-face {
+      font-family: 'Iransans';
+      src: url('./../../public/fonts/IRANSans_Medium.ttf') format('truetype');
+      font-weight: 500;
+      font-display: swap;
+  }
+
+  @font-face {
+      font-family: Iran sans;
+      src: url('./../../public/fonts/IRANSans_Bold.ttf') format('truetype');
+      font-weight: 700;
+      font-display: swap;
+  }
+
+  @font-face {
+      font-family: Iransans;
+      src: url('./../../public/fonts/IRANSans_Black.ttf') format('truetype');
+      font-weight: 900;
+      font-display: swap;
   }
 }
+
+/* <====== tailwind css ======> */
