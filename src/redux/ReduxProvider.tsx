@@ -1,10 +1,9 @@
-// src/redux/ReduxProvider.tsx
 'use client';
 
-import { ReactNode } from 'react';
 import { Provider } from 'react-redux';
-import  store  from './store';
+import { makeStore } from './store';
 
-export default function ReduxProvider({ children }: { children: ReactNode }) {
+export function ReduxProvider({ children }: { children: React.ReactNode }) {
+  const store = makeStore(); // یا می‌تونی از useMemo هم استفاده کنی
   return <Provider store={store}>{children}</Provider>;
 }

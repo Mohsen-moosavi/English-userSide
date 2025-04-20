@@ -15,3 +15,15 @@ export const appJsonApi = axios.create({
       'Content-Type': 'multipart/form-data',
     },
   });
+
+
+export const createAxiosInstanceForSSR = (cookie?: string) => {
+  return axios.create({
+    baseURL: 'http://localhost:4000/api/v1', // یا هر آدرس بک‌اندی که داری
+    withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json',
+      ...(cookie ? { Cookie: cookie } : {}), // فقط اگر سمت سرور باشیم
+    },
+  });
+};

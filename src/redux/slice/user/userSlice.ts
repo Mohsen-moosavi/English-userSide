@@ -4,12 +4,12 @@ import { getUserInfoThunk, loginThunk, registerThunk, resendCodeThunk, resendFor
 import toast from "react-hot-toast";
 
 interface UserState {
-  userName: null,
-  userPhone: null,
-  userAvatar: null,
-  userScore: null,
-  userRole: null,
-  userLevel: null,
+  userName: string|null,
+  userPhone: string|null,
+  userAvatar: string|null,
+  userScore: string|null,
+  userRole: string|null,
+  userLevel: string|null,
 }
 
 const initialState: UserState = {
