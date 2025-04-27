@@ -6,7 +6,6 @@ import Link from 'next/link'
 async function LastArticles() {
 
         const { responseData: article, error } = await getLastArticleService()
-        console.log("res article=======================>" , article)
 
         if(error){
             <></>

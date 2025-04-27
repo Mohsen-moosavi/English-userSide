@@ -1,6 +1,6 @@
 import CheckOtpForm from '@/components/template/auth/check-otp/CheckOtpForm'
 
-const CheckOtp = (props : any)=> {
+const CheckOtp = ()=> {
     // useEffect(()=>{
     //     console.log("props=========================>" , props)
     // },[])

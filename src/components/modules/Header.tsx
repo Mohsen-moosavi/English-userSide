@@ -1,5 +1,4 @@
 import React from 'react'
-import humbergerMenuImage from '@images/hamburger.png'
 import graduationImage from '@images/graduation.png'
 import logo1Image from '@images/logo1.png'
 import logo2Image from '@images/logo2.png'

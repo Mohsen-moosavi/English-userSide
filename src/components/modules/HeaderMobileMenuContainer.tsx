@@ -1,7 +1,6 @@
 'use client'
 import Image from 'next/image'
 import React from 'react'
-import logo1Image from '@images/logo1.png'
 import closeImage from '@images/close.png'
 import useAppSelector from '@/hooks/useAppSelector'
 import useAppDispatch from '@/hooks/useAppDispatch'

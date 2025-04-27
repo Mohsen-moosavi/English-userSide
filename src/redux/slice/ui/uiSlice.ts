@@ -20,9 +20,9 @@ const uiSlice = createSlice({
         state.isMenuMobileOpen= false
       }
   },
-  extraReducers: (builder) => {
-    builder
-  },
+  // extraReducers: (builder) => {
+  //   builder
+  // },
 });
 
 export const { openMenu, closeMenu} = uiSlice.actions;

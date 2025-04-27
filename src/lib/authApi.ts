@@ -4,9 +4,9 @@ import memoizee from "memoizee"
 
 const sendRefreshTokenRequest = async () => {
     try {
-        const response = await appJsonApi.post('/auth/refresh-token')
+        await appJsonApi.post('/auth/refresh-token')
         return true
-    } catch (error) {
+    } catch {
         // window.location.assign('/login')
     }
 }

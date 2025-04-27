@@ -10,7 +10,7 @@ const sendServerRefreshTokenRequest = async () => {
   try {
     await axios.post('/auth/refresh-token');
     return true;
-  } catch (error) {
+  } catch {
     return false;
   }
 };

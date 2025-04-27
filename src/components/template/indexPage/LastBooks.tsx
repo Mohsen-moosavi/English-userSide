@@ -1,4 +1,3 @@
-import SwiperSlider from '@/components/modules/SwiperSlider'
 import { getLastBookService } from '@/services/indexpageService'
 import Link from 'next/link'
 import React from 'react'

@@ -1,7 +1,6 @@
 import { getLastCourseService } from '@/services/indexpageService'
 import Link from 'next/link'
 import React from 'react'
-import SwiperSlider from '@/components/modules/SwiperSlider';
 import LastCourseSwiper from './LastCourseSwiper';
 
 export const revalidate = 86400

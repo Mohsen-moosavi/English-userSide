@@ -27,7 +27,7 @@ function LoginForm() {
             password: '',
         },
         validationSchema: FormValidation,
-        onSubmit: async (values, { resetForm }) => {
+        onSubmit: async (values) => {
             setSending(true)
 
             const resultAction = await dispatch(loginThunk({phone : values.phone , password: values.password}))

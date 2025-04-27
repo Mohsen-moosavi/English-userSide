@@ -44,7 +44,7 @@ function VerifyPhoneForm({ forgetPass }: { forgetPass: boolean }) {
             captcha: '',
         },
         validationSchema: FormValidation,
-        onSubmit: async (values, { resetForm }) => {
+        onSubmit: async (values) => {
             setSending(true)
 
             const dispatchResult = forgetPass ?

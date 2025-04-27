@@ -1,4 +1,3 @@
-import { appJsonApi } from "@/lib/axios";
 import constant from "@/utils/constant";
 
 export const getLastCourseService = async () :Promise<{responseData?:any, error?:any}>=>{

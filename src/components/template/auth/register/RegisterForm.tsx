@@ -34,7 +34,7 @@ function RegisterForm() {
             confirmPassword: ''
         },
         validationSchema: FormValidation,
-        onSubmit: async (values, { resetForm }) => {
+        onSubmit: async (values) => {
             setSending(true)
 
             const dispatchResult = await dispatch(registerThunk( {phone:`+98${String(phoneParam)}`, name: values.name, username:values.username, password:values.password, confirmPassword:values.confirmPassword,verifiedPhoneCode:String(verifiedPhoneCodeParam)}))

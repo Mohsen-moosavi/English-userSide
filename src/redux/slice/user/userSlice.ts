@@ -1,6 +1,6 @@
 // src/redux/features/user/userSlice.ts
 import { createSlice } from "@reduxjs/toolkit";
-import { getUserInfoThunk, loginThunk, registerThunk, resendCodeThunk, resendForgetpassCodeThunk, resetPasswordThunk, verifyForgetCodeThunk, verifyPhoneThunk } from "./userThunks";
+import { getUserInfoThunk, loginThunk, registerThunk, resendCodeThunk, resendForgetpassCodeThunk, resetPasswordThunk } from "./userThunks";
 import toast from "react-hot-toast";
 
 interface UserState {
@@ -59,18 +59,18 @@ const userSlice = createSlice({
       })
 
 
-      .addCase(resendForgetpassCodeThunk.fulfilled, (state, action) => {
+      .addCase(resendForgetpassCodeThunk.fulfilled, () => {
         toast.success('کد با موفقیت ارسال شد.')
       })
-      .addCase(resendForgetpassCodeThunk.rejected, (state, action) => {
+      .addCase(resendForgetpassCodeThunk.rejected, (_,action) => {
         toast.error(action.payload as string || "Something went wrong")
       })
 
 
-      .addCase(resendCodeThunk.fulfilled, (state, action) => {
+      .addCase(resendCodeThunk.fulfilled, () => {
         toast.success('کد با موفقیت ارسال شد.')
       })
-      .addCase(resendCodeThunk.rejected, (state, action) => {
+      .addCase(resendCodeThunk.rejected, (_, action) => {
         toast.error(action.payload as string || "Something went wrong")
       })
 
@@ -84,14 +84,14 @@ const userSlice = createSlice({
         state.userRole = action.payload.data.user.role;
         state.userLevel = action.payload.data.user.level;
       })
-      .addCase(registerThunk.rejected, (state, action) => {
+      .addCase(registerThunk.rejected, (_, action) => {
         toast.error(action.payload as string || "Something went wrong")
       })
 
-      .addCase(resetPasswordThunk.fulfilled, (state, action) => {
+      .addCase(resetPasswordThunk.fulfilled, (_, action) => {
         toast.success(action.payload.message)
         })
-      .addCase(resetPasswordThunk.rejected, (state, action) => {
+      .addCase(resetPasswordThunk.rejected, (_, action) => {
         toast.error(action.payload as string || "Something went wrong")
       })
 

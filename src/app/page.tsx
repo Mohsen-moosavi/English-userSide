@@ -1,5 +1,3 @@
-import Image from "next/image";
-import styles from "./page.module.css";
 import Header from "@/components/modules/Header";
 import LastCourses from "@/components/template/indexPage/LastCourses";
 import Landing from "@/components/template/indexPage/Landing";

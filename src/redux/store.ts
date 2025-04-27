@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import uiReducer from './slice/ui/uiSlice';
 import userReducer from './slice/user/userSlice';
+import courseReducer from './slice/course/courseSlice';
 
 export const makeStore = () =>
   configureStore({
     reducer: {
       ui: uiReducer,
       user: userReducer,
+      course: courseReducer,
     },
   });
 

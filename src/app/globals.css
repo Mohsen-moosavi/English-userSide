@@ -183,7 +183,7 @@ footer ul li{
 #article-info p{
     font-size: 16px;
     color: #808080;
-    text-align: justify;
+    text-align: justify !important;
 }
 
 #article-info img{

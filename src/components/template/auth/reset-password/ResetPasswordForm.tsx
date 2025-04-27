@@ -28,7 +28,7 @@ function ResetPasswordForm() {
             confirmPassword: ''
         },
         validationSchema: FormValidation,
-        onSubmit: async (values, { resetForm }) => {
+        onSubmit: async (values) => {
             setSending(true)
 
             const dispatchResult = await dispatch(resetPasswordThunk({phone:`+98${String(phoneParam)}`, password:values.password, confirmPassword:values.confirmPassword, verifiedPhoneCode: String(verifiedPhoneCodeParam)}))
