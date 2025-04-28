@@ -10,7 +10,7 @@ export default function RelatedCourseBox({name,slug,cover}:RelatedCourseType) {
     <Link href={`/courses/${slug}`} className="flex items-center justify-start gap-x-2">
         <Image src={cover} width={100} height={60}
             className="max-w-[80px] max-h-[48px]  md:max-w-[100px] md:max-h-[60px] m-0 border-none rounded-none" alt={name} />
-        <span className='max-sm:text-sm'>{name}</span>
+        <span className='max-sm:text-sm truncate'>{name}</span>
     </Link>
 </div>
   )

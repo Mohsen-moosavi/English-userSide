@@ -1,10 +1,9 @@
 import RelatedArticleBox from '@/components/modules/RelatedArticleBox'
-import { getRelatedArticlesService } from '@/services/singleCourseService'
+import { getRelatedArticlesService } from '@/services/singleArticleService'
 import { RelatedArticleType } from '@/utils/types'
 import React from 'react'
 
-async function RelatedArticles({slug} : {slug:string}) {
-    
+async function RelatedArticles({slug}:{slug:string}) {
     const { responseData: articles, error }: { responseData?: RelatedArticleType[], error?: any } = await getRelatedArticlesService(slug)
     
   return (

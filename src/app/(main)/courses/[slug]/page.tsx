@@ -70,7 +70,7 @@ async function page({ params }: PageProps) {
     } else {
         return (
             <main>
-                <Breadcrumb links={[{name:'دوره ها',url:'/courses'},{name:course?.name||'' ,url:`/${slug}`}]}/>
+                <Breadcrumb links={[{name:'دوره ها',url:'/courses'},{name:course?.name||'' ,url:`/courses/${slug}`}]}/>
                 <section>
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-2 mt-4 rounded-xl shadow-center p-4 gap-y-3 gap-x-3">

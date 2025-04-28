@@ -11,3 +11,16 @@ export type RelatedArticleType = {
     slug: string,
     cover: string
 }
+
+export type ArticleType = {
+    id: number,
+    title: string,
+    shortDescription: string,
+    longDescription: string,
+    links: string,
+    cover: string,
+    slug: string,
+    isPublished: boolean,
+    created_at: Date,
+    user: {id:number,name:string}
+}
