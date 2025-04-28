@@ -1,7 +1,7 @@
 'use client'
 
-import { SessionsType } from "@/app/(main)/courses/[slug]/page";
 import { getSingleCourseSessionService } from "@/services/singleCourseService";
+import { SessionsType } from "@/utils/types";
 import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";

@@ -10,47 +10,10 @@ import { changeDateToPersianLanguage } from '@/utils/date.utils'
 import { sanitizeHtml } from '@/utils/sanitizeHtml'
 import Link from 'next/link'
 import React from 'react'
+import { CourseType } from '@/utils/types'
 
 
 export const revalidate = 86400
-
-
-export type SessionsType = {
-    id: number,
-    name: string,
-    time: string,
-    isFree: boolean
-}
-
-export type CommentsType = {
-    id: number,
-    content: string,
-    score: number | null,
-    created_at: Date,
-    replies: CommentsType[],
-    user: { name: string, avatar: string | null, role: { name: string } }
-}
-
-export type CourseType = {
-    id: number,
-    name: string,
-    shortDescription: string,
-    longDescription: string,
-    price: string,
-    cover: string,
-    introductionVideo: string,
-    isCompleted: number,
-    sessionCount: number,
-    commentCount: number,
-    time: string,
-    offs: [{ id: number, percent: number, expire: Date }],
-    level: { id: number, name: string },
-    score: number | string,
-    book_collection: { id: number, name: string, ageGrate: string }
-    user: { id: number, name: string }
-    sessions: SessionsType[],
-    comments: CommentsType[]
-}
 
 type PageProps =
     {
@@ -61,11 +24,12 @@ async function page({ params }: PageProps) {
 
     const { slug } = await params;
     const { responseData: course, error }: { responseData?: CourseType, error?: any } = await getSingleCourseService(slug)
-    // console.log('props lll=========================>', course)
 
     if (error) {
         return (
-            <></>
+            <div className='h-[80vh] text-red-400 font-bold text-md flex items-center w-full justify-center'>
+                اطلاعات دوره یافت نشد!
+            </div>
         )
     } else {
         return (

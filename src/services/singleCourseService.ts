@@ -1,9 +1,8 @@
-import { CourseType, SessionsType } from "@/app/(main)/courses/[slug]/page";
 import apiPrivate from "@/lib/apiPrivate";
 import { authRequest } from "@/lib/authApi";
 import { appJsonApi } from "@/lib/axios";
 import constant from "@/utils/constant";
-import { RelatedArticleType, RelatedCourseType } from "@/utils/types";
+import { CourseType, RelatedArticleType, RelatedCourseType, SessionsType } from "@/utils/types";
 
 export const getSingleCourseService = async (slug: string): Promise<{ responseData?: any, error?: any }> => {
   try {

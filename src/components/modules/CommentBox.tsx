@@ -1,8 +1,8 @@
-import { CommentsType } from '@/app/(main)/courses/[slug]/page'
 import moment from 'moment-jalaali'
 import userProfile from '@images/user-profile.png'
 import Image from 'next/image'
 import React from 'react'
+import { CommentsType } from '@/utils/types'
 
 type pageProps = {
     content: string,

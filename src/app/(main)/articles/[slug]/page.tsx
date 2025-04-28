@@ -21,8 +21,8 @@ async function page({ params }: PageProps) {
 
     if (error) {
         return (
-            <div>
-
+            <div className='h-[80vh] text-red-400 font-bold text-md flex items-center w-full justify-center'>
+                اطلاعات مقاله یافت نشد!
             </div>
         )
     } else {

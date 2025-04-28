@@ -1,9 +1,8 @@
 // src/redux/features/user/userSlice.ts
 import { createSlice } from "@reduxjs/toolkit";
-import { CommentsType, SessionsType } from "@/app/(main)/courses/[slug]/page";
 import { getMoreCommentThunk, sendCommentThunk } from "./courseThunks";
 import toast from "react-hot-toast";
-import useAppSelector from "@/hooks/useAppSelector";
+import { CommentsType, SessionsType } from "@/utils/types";
 
 interface CourseState {
   sessions: SessionsType[],

@@ -1,3 +1,41 @@
+export type SessionsType = {
+    id: number,
+    name: string,
+    time: string,
+    isFree: boolean
+}
+
+export type CommentsType = {
+    id: number,
+    content: string,
+    score: number | null,
+    created_at: Date,
+    replies: CommentsType[],
+    user: { name: string, avatar: string | null, role: { name: string } }
+}
+
+export type CourseType = {
+    id: number,
+    name: string,
+    shortDescription: string,
+    longDescription: string,
+    price: string,
+    cover: string,
+    introductionVideo: string,
+    isCompleted: number,
+    sessionCount: number,
+    commentCount: number,
+    time: string,
+    offs: [{ id: number, percent: number, expire: Date }],
+    level: { id: number, name: string },
+    score: number | string,
+    book_collection: { id: number, name: string, ageGrate: string }
+    user: { id: number, name: string }
+    sessions: SessionsType[],
+    comments: CommentsType[]
+}
+
+
 export type RelatedCourseType = {
     id: number,
     name: string,

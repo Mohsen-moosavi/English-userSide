@@ -1,14 +1,11 @@
 'use client'
 
-import { CommentsType } from "@/app/(main)/courses/[slug]/page";
 import CommentBox from "@/components/modules/CommentBox";
 import useAppDispatch from "@/hooks/useAppDispatch";
 import useAppSelector from "@/hooks/useAppSelector";
 import { addNewComments } from "@/redux/slice/course/courseSlice";
 import { getMoreCommentThunk } from "@/redux/slice/course/courseThunks";
-import Link from "next/link";
 import { useState } from "react";
-import toast from "react-hot-toast";
 
 type pageProps = {
     commentCount: number,
