@@ -4,7 +4,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import CourseBox, { TypeCourseBox } from './CourseBox';
+import { TypeCourseBox } from '@/utils/types';
+import CourseBox from './CourseBox';
 
 function SwiperSlider({ courses }: { courses: TypeCourseBox[] }) {
   return (

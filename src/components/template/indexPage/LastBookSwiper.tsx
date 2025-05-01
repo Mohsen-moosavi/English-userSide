@@ -2,7 +2,8 @@
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
-import BookBox, { TypeBookBox } from '@/components/modules/BookBox';
+import BookBox from '@/components/modules/BookBox';
+import { TypeBookBox } from '@/utils/types';
 
 function LastBookSwiper({books}:{books:TypeBookBox[]}) {
     return (
@@ -30,7 +31,7 @@ function LastBookSwiper({books}:{books:TypeBookBox[]}) {
         className="mySwiper"
       >
                     {books.map((book: TypeBookBox) => (
-                  <SwiperSlide key={book.id}>
+                  <SwiperSlide key={book.id} className='h-full'>
                       <BookBox {...book} />
                   </SwiperSlide>
               ))}

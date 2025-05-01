@@ -1,9 +1,10 @@
 'use client'
 import React from 'react'
-import CourseBox, { TypeCourseBox } from '@/components/modules/CourseBox'
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
+import { TypeCourseBox } from '@/utils/types';
+import CourseBox from '@/components/modules/CourseBox';
 
 function LastCourseSwiper({ courses }: { courses: TypeCourseBox[] }) {
     return (

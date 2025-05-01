@@ -1,20 +1,9 @@
+import { TypeCourseBox } from '@/utils/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-export type TypeCourseBox = {
-    id:number
-    name : string,
-    slug : string,
-    cover : string,
-    levelName : string,
-    levelId : number,
-    score : number|string,
-    teacherName : string,
-    teacherId : number,
-    offPercent : number | null,
-    price : string|number
-}
+
 
 function CourseBox({name,slug,cover,levelName,levelId,score,teacherName,teacherId,offPercent,price} : TypeCourseBox) {
   return (

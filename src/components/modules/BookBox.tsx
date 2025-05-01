@@ -1,20 +1,13 @@
+import { TypeBookBox } from '@/utils/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-
-export type TypeBookBox = {
-    id: number,
-    name: string,
-    cover: string,
-    slug: string,
-    courseCount: number,
-}
 
 function BookBox({name, cover, slug, courseCount }: TypeBookBox) {
     return (
         <div className="shadow-center rounded-2xl overflow-hidden">
             <Link href={`/books/${slug}`} className="text-center relative">
-                <Image src={cover} alt="books" width={300} height={300} className='2xl:h-[281px] xl:h-[231px] lg:h-[182px] md:h-[205px] sm:h-[108px] max-sm:max-h-[349px]'/>
+                <Image src={cover} alt="books" width={300} height={300} className='w-full 2xl:h-[281px] xl:h-[231px] lg:h-[182px] md:h-[205px] sm:h-[160px] max-sm:max-h-[349px] max-sm:h-full'/>
                     <div
                         className="bg-[#000000ab] backdrop-blur-[2px] p-2 rounded-lg absolute w-[70%] right-2/4 translate-x-2/4 bottom-4">
                         <h4 className="max-sm:text-sm text-white">مجموعه آموزش کتاب های <br/><strong

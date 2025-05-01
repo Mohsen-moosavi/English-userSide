@@ -62,3 +62,25 @@ export type ArticleType = {
     created_at: Date,
     user: {id:number,name:string}
 }
+
+export type TypeCourseBox = {
+    id:number
+    name : string,
+    slug : string,
+    cover : string,
+    levelName : string,
+    levelId : number,
+    score : number|string,
+    teacherName : string,
+    teacherId : number,
+    offPercent : number | null,
+    price : string|number
+}
+
+export type TypeBookBox = {
+    id: number,
+    name: string,
+    cover: string,
+    slug: string,
+    courseCount: number,
+}
