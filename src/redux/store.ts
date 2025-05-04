@@ -5,6 +5,7 @@ import courseReducer from './slice/course/courseSlice';
 import allBookReducer from './slice/allBooks/allBookSlice';
 import allCourseReducer from './slice/allCourses/allCourseSlice';
 import allArticleReducer from './slice/allArticles/allArticlesSlice';
+import searchReducer from './slice/search/searchSlice';
 
 export const makeStore = () =>
   configureStore({
@@ -15,6 +16,7 @@ export const makeStore = () =>
       allBook: allBookReducer,
       allCourse: allCourseReducer,
       allArticle: allArticleReducer,
+      search: searchReducer,
     },
   });
 

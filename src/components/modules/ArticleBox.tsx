@@ -16,11 +16,11 @@ export type TypeArticleBox = {
 function ArticleBox({title,shortDescription,slug,cover,author,created_at}: TypeArticleBox) {
   return (
     <div className="shadow-center rounded-2xl overflow-hidden transition-all hover:-translate-y-2">
-    <Link href={`/articles${slug}`} className="text-center relative">
+    <Link href={`/articles/${slug}`} className="text-center relative">
         <Image src={cover} alt="books" className="min-w-full max-h-[200px]" width={350} height={200}/>
         <div
             className="p-2 rounded-b-lg relative shadow-[0_10px_60px_35px_#000]">
-            <h3 className="max-sm:text-sm text-start text-custom-dark-blue font-bold mb-2">{title}</h3>
+            <h3 className="max-sm:text-sm text-start text-custom-dark-blue font-bold mb-2 truncate">{title}</h3>
             <p className="text-custom-gray text-justify font-light text-sm max-h-[60px] min-h-[70px] text-ellipsis overflow-hidden">{`${shortDescription}...`}</p>
             <div className="flex justify-between items-center max-sm:text-[12px] text-[#ffa500] mt-2 text-sm">
                 <div className="flex">

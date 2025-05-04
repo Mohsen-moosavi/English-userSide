@@ -17,7 +17,7 @@ interface AllArticleState {
 const initialState: AllArticleState = {
     articles: [],
     articlesCount: 0,
-    limit: 1,
+    limit: 6,
     offset: 0,
     loaded: false,
     searchWord: '',

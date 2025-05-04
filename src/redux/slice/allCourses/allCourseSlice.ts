@@ -19,7 +19,7 @@ interface AllCourseState {
 const initialState: AllCourseState = {
   courses: [],
   coursesCount: 0,
-  limit: 1,
+  limit: 6,
   offset: 0,
   loaded: false,
   category: '',
