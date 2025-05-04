@@ -67,6 +67,7 @@ async function page({ params }: PageProps) {
                                     <div id='article-shortlinks' dangerouslySetInnerHTML={{ __html: sanitizeHtml(JSON.parse(article?.links||'').join(''))}}>
                                     </div>
                                     </div>
+                                    <p>{article?.shortDescription}</p>
 
                                     <article id='article-info' dangerouslySetInnerHTML={{ __html: sanitizeHtml(article?.longDescription || '') }}>
                                     </article>

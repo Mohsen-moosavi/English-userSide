@@ -84,3 +84,20 @@ export type TypeBookBox = {
     slug: string,
     courseCount: number,
 }
+
+export type BookType = {
+    id: number,
+    name: string,
+    shortDescription: string,
+    longDescription: string,
+    ageGrate: string,
+    grate: string,
+    cover: string,
+    slug: string,
+    links: string,
+    created_at: Date,
+    time: string,
+    forChildren: boolean,
+    courses : {id:number, slug:string, cover:string,name:string}[],
+    tags : {name:string}[],
+}

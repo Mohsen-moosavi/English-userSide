@@ -10,7 +10,7 @@ async function RelatedCourses({slug}:{slug:string}) {
     if(error){
         return (
             <div className='h-[100px] rounded-xl p-3 items-self-start shadow-center text-red-400 font-bold text-sm flex items-center w-full justify-center'>
-            مقاله مرتبطی یافت نشد!!!
+            دوره مرتبطی یافت نشد!!!
         </div>
         )
     }else{
