@@ -4,7 +4,7 @@ import memoizee from "memoizee"
 
 const sendRefreshTokenRequest = async () => {
     try {
-        await appJsonApi.post('/auth/refresh-token')
+        await appJsonApi.post('/auth/refresh-token',{},{withCredentials:true})
         return true
     } catch {
         // window.location.assign('/login')
@@ -26,7 +26,7 @@ const authRequest = async (request:Function):Promise<{response?:any, error?:any}
     if (isExpired) {
         const isRefreshed = await refreshToken();
         if (isRefreshed) {
-            const { response, error } = await request()
+            const { response, error } = await request()()
             return { response, error }
         }
     } else {

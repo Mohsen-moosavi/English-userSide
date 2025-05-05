@@ -11,6 +11,7 @@ export const getUserInfoThunk = createAsyncThunk(
     try {
       const { response, error } = await getUserInfo();
       if (error) throw error;
+      console.log("user============================>" , response)
       return response.data;
     } catch (err: any) {
       return thunkAPI.rejectWithValue(err?.response?.data?.message || err.message);
@@ -26,7 +27,6 @@ export const loginThunk = createAsyncThunk(
       if (error) throw error;
       return response.data;
     } catch (err: any) {
-      toast.error(err?.response?.data?.message || err.message)
       return thunkAPI.rejectWithValue(err?.response?.data?.message || err.message);
     }
   }
@@ -151,6 +151,7 @@ export const registerThunk = createAsyncThunk(
   async ({ phone, name, username, password, confirmPassword,verifiedPhoneCode}: { phone:string , name:string , username:string , password:string , confirmPassword:string ,verifiedPhoneCode:string}, thunkAPI) => {
     try {
       const { response, error } = await registerService(phone,name,username,password,confirmPassword,verifiedPhoneCode);
+      console.log("result==================>" , response)
       if (error) throw error;
       return response.data;
     } catch (err: any) {

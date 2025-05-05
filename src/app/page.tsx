@@ -5,6 +5,7 @@ import LastBooks from "@/components/template/indexPage/LastBooks";
 import IntroductionOurWebsite from "@/components/template/indexPage/IntroductionOurWebsite";
 import LastArticles from "@/components/template/indexPage/LastArticles";
 import Footer from "@/components/modules/Footer";
+import Search from "@/components/template/indexPage/Search";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <main>
         <Landing />
         <LastBooks/>
+        <Search/>
         <LastCourses />
         <IntroductionOurWebsite/>
         <LastArticles/>

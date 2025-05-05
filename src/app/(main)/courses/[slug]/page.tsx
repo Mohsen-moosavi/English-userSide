@@ -11,6 +11,8 @@ import { sanitizeHtml } from '@/utils/sanitizeHtml'
 import Link from 'next/link'
 import React from 'react'
 import { CourseType } from '@/utils/types'
+import TagLink from '@/components/modules/TagLink'
+import AddToBag from '@/components/template/courseDetails/AddToBag'
 
 
 export const revalidate = 86400
@@ -41,31 +43,7 @@ async function page({ params }: PageProps) {
                             <div className="flex flex-col gap-y-3">
                                 <h1 className="font-bold text-lg sm:text-2xl text-custom-dark-blue">{course?.name}</h1>
                                 <p className="max-sm:text-sm text-justify sm:mt-3 text-custom-gray">{`${course?.shortDescription.slice(0, 600)}...`}</p>
-                                {course?.offs[0] ? (
-                                    <div className="my-auto flex items-cneter justify-between rounded-full border-2 border-solid border-custom-red bg-red-400/20 py-1 px-2 sm:px-3 sm:py-3 text-custom-red my-3 max-sm:text-[12px]">
-                                        <span>{course?.offs[0].percent}% تخفیف ویژه</span>
-                                        <div className="flex gap-x-2">
-                                            <span>تا {changeDateToPersianLanguage(course.offs[0].expire)} ماه</span>
-                                        </div>
-                                    </div>
-                                ) : null}
-
-                                <div className="flex max-sm:flex-col sm:items-center sm:justify-between mt-auto gap-y-2">
-                                    <button
-                                        className=" max-sm:order-2 px-3 py-2 bg-custom-dark-blue text-white rounded-full hover:opacity-60 xl:text-xl">افزودن
-                                        به سبد خرید</button>
-                                    {course?.offs[0] ? (
-                                        <div className="flex">
-                                            <del className="text-custom-gray xl:text-lg mx-2">{Number(course?.price).toLocaleString()}</del>
-                                            <span className="text-custom-dark-blue font-bold xl:text-xl">{(Number(course?.price) - Math.round((Number(course?.price) * course.offs[0].percent) / 100)).toLocaleString()} تومان</span>
-                                        </div>
-                                    ) : (
-                                        <div className="flex">
-                                            <span className="text-custom-dark-blue font-bold xl:text-xl">{Number(course?.price) === 0 ? "رایگان" : `${Number(course?.price).toLocaleString()}  تومان`}</span>
-                                        </div>
-                                    )}
-
-                                </div>
+                                <AddToBag courseId={course?.id || 0} off={course?.offs[0]||null} price={course?.price || '0'} slug={slug}/>
                             </div>
 
                             <div>
@@ -253,6 +231,22 @@ async function page({ params }: PageProps) {
                                 <div className="sticky top-3">
                                     <RelatedCourses slug={slug}/>
                                     <RelatedArticles slug={slug}/>
+                                    <article className="rounded-xl p-3 items-self-start shadow-center mt-4">
+                                        <span className="text-lg text-custom-dark-blue font-bold">تگ های مرتبط</span>
+                                        <div className="mt-3 flex gap-x-2 flex-wrap">
+                                            {course?.tags.length ? (
+                                                <>
+                                            {course?.tags?.map((tag,i) => (
+                                                <TagLink key={i} tagName={tag.name}/>
+                                            ))}
+                                                </>
+                                            ):(
+                                                <div className='h-[100px] rounded-xl p-3 items-self-start shadow-center text-red-400 font-bold text-sm flex items-center w-full justify-center'>
+                                                تگ مرتبطی یافت نشد!!!
+                                            </div>
+                                            )}
+                                        </div>
+                                    </article>
                                 </div>
                             </div>
                         </div>

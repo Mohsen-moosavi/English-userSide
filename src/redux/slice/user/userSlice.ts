@@ -10,6 +10,7 @@ interface UserState {
   userScore: string|null,
   userRole: string|null,
   userLevel: string|null,
+  userCourses : number[]|null
 }
 
 const initialState: UserState = {
@@ -19,6 +20,7 @@ const initialState: UserState = {
   userScore: null,
   userRole: null,
   userLevel: null,
+  userCourses : null
 };
 
 const userSlice = createSlice({
@@ -43,6 +45,7 @@ const userSlice = createSlice({
       state.userScore = action.payload.data.user.score;
       state.userRole = action.payload.data.user.role;
       state.userLevel = action.payload.data.user.level;
+      state.userCourses = action.payload.data.user.courses;
       })
 
 
@@ -53,8 +56,9 @@ const userSlice = createSlice({
         state.userScore = action.payload.user.score;
         state.userRole = action.payload.user.role;
         state.userLevel = action.payload.user.level;
+        state.userCourses = action.payload.user.courses;
       })
-      .addCase(loginThunk.rejected, (state, action) => {
+      .addCase(loginThunk.rejected, (_, action) => {
         toast.error(action.payload as string || "Something went wrong")
       })
 
@@ -83,6 +87,7 @@ const userSlice = createSlice({
         state.userScore = action.payload.data.user.score;
         state.userRole = action.payload.data.user.role;
         state.userLevel = action.payload.data.user.level;
+        state.userCourses = action.payload.data.user.courses;
       })
       .addCase(registerThunk.rejected, (_, action) => {
         toast.error(action.payload as string || "Something went wrong")

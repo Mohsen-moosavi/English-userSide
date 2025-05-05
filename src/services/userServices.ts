@@ -8,7 +8,7 @@ export const getUserInfo = ():Promise<{response?:any, error?:any}> => {
   return authRequest(() =>
     async () => {
       try {
-        const response = await apiPrivate(appJsonApi).get("/auth/get-me");
+        const response = await apiPrivate(appJsonApi).get("/auth/get-me/user-side");
         return { response };
       } catch (error) {
         return { error };

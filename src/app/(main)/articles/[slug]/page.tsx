@@ -1,4 +1,5 @@
 import Breadcrumb from '@/components/modules/Breadcrumb';
+import TagLink from '@/components/modules/TagLink';
 import RelatedArticles from '@/components/template/articleDetails/RelatedArticles';
 import RelatedCourses from '@/components/template/articleDetails/RelatedCourses';
 import { getSingleArticleService } from '@/services/singleArticleService';
@@ -77,6 +78,22 @@ async function page({ params }: PageProps) {
                                 <div className="sticky top-3">
                                     <RelatedCourses slug={slug}/>
                                     <RelatedArticles slug={slug}/>
+                                    <article className="rounded-xl p-3 items-self-start shadow-center mt-4">
+                                        <span className="text-lg text-custom-dark-blue font-bold">تگ های مرتبط</span>
+                                        <div className="mt-3 flex gap-x-2 flex-wrap">
+                                            {article?.tags.length ? (
+                                                <>
+                                            {article?.tags?.map((tag,i) => (
+                                                <TagLink key={i} tagName={tag.name}/>
+                                            ))}
+                                                </>
+                                            ):(
+                                                <div className='h-[100px] rounded-xl p-3 items-self-start shadow-center text-red-400 font-bold text-sm flex items-center w-full justify-center'>
+                                                تگ مرتبطی یافت نشد!!!
+                                            </div>
+                                            )}
+                                        </div>
+                                    </article>
                                 </div>
                             </div>
                         </div>

@@ -76,7 +76,7 @@ function ArticleList() {
                                         </div>
                                     </>
                                 ) : (
-                                    <div className="h-[60vh] w-full flex items-center justify-center">
+                                    <div className="h-[40px] w-full flex items-center justify-center my-4">
                                         <span className='text-red-400 text-md'>موردی یافت نشد!!!</span>
                                     </div>
                                 )}

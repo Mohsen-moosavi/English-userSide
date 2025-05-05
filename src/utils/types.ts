@@ -32,7 +32,8 @@ export type CourseType = {
     book_collection: { id: number, name: string, ageGrate: string }
     user: { id: number, name: string }
     sessions: SessionsType[],
-    comments: CommentsType[]
+    comments: CommentsType[],
+    tags:{name:string}[]
 }
 
 
@@ -60,7 +61,8 @@ export type ArticleType = {
     slug: string,
     isPublished: boolean,
     created_at: Date,
-    user: {id:number,name:string}
+    user: {id:number,name:string},
+    tags:{name:string}[]
 }
 
 export type TypeCourseBox = {
