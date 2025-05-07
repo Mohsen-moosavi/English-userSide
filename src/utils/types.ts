@@ -103,3 +103,11 @@ export type BookType = {
     courses : {id:number, slug:string, cover:string,name:string}[],
     tags : {name:string}[],
 }
+
+export type SingleSessionType = {
+    id: number,
+    name: string,
+    video: string,
+    file: string|null,
+    isFree:boolean
+}
