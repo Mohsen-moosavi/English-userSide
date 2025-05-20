@@ -44,8 +44,12 @@ function CourseBox({name,slug,cover,levelName,levelId,score,teacherName,teacherI
         </div>
             ):(
                 <div className="flex flex-col items-end">
-                <span className="text-end text-custom-dark-blue font-bold leading-[16px] mt-2">{Number(price).toLocaleString()}<br/><span
+                    {Number(price)===0 ? (
+                        <span className="text-end text-custom-dark-blue font-bold leading-[16px] mt-2">رایگان</span>
+                    ) :(
+                        <span className="text-end text-custom-dark-blue font-bold leading-[16px] mt-2">{Number(price).toLocaleString()}<br/><span
                         className="font-medium text-custom-gray">تومان</span></span>
+                    )}
             </div>
             )}
 

@@ -35,7 +35,7 @@ footer a{
 
 
 a:hover{
-  color: #43d7ff;
+  opacity: 60%;
 }
 
 
@@ -149,6 +149,39 @@ footer ul li{
   box-shadow: 0 0 10px 0 #009fca;
 }
 
+.user-panel-image-container{
+  background: linear-gradient(to right,#559cc6e3, #739eeba6), url(./../../public//images/userpanel-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  
+}
+.swal2-popup{
+  background-color: #fffed0;
+  border-radius: 10px;
+}
+
+.swal2-actions{
+  display: flex;
+  width: 90%;
+}
+.swal2-confirm, .swal2-cancel{
+  flex: 1;
+}
+.swal2-confirm{
+  background-color: #166d91;
+}
+
+.ticket-blue-gradient{
+  background: linear-gradient(to bottom, rgba(43, 128, 255, 0.3),rgba(43, 128, 255, 0));
+}
+
+.ticket-green-gradient{
+  background: linear-gradient(to bottom, rgb(179, 221, 138),rgba(255, 255, 255, 0));
+}
+
+.ticket-red-gradient{
+  background: linear-gradient(to bottom, rgb(253, 171, 128),rgb(255, 255, 255,0));
+}
 /* <====== end helpers ======> */
 
 /* <====== start article styles ======> */
@@ -217,6 +250,21 @@ footer ul li{
     margin-bottom: 10px;
 }
 
+@media (max-width : 768px) {
+  .swal2-title{
+    font-size: 18px;
+}
+
+.swal2-icon {
+    max-width: 80px;
+    height: auto;
+} 
+
+.user-panel-image-container{
+  background: linear-gradient(to right,#081d29e3, #3c5381a6), url(./../../public//images/userpanel-bg.jpg);  
+}
+}
+
 @media (max-width : 640px) {
     #article-info h1{
         font-size: 20px;
@@ -238,7 +286,11 @@ footer ul li{
     
     #article-info p{
         font-size: 14px;
-    }    
+    } 
+    
+    .swal2-title{
+      font-size: 14px;
+  }
 }
 
 /* <====== end article styles ======> */

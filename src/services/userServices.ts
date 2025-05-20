@@ -2,7 +2,7 @@
 
 import apiPrivate from "@/lib/apiPrivate";
 import { authRequest } from "@/lib/authApi";
-import { appJsonApi } from "@/lib/axios";
+import { appJsonApi, multipartFormApi } from "@/lib/axios";
 
 export const getUserInfo = ():Promise<{response?:any, error?:any}> => {
   return authRequest(() =>
@@ -141,6 +141,88 @@ export const resetPasswordService = async (phone:string , password: string , con
       confirmPassword,
       verifiedPhoneCode
   },{
+    withCredentials:true
+  });
+      return { response : response };
+  } catch (error) {
+      return {error};
+  }
+}
+
+export const uploadProfileImageService = (file:any):Promise<{response?:any, error?:any}> => {
+  return authRequest(() =>
+    async () => {
+      try {
+        const formData = new FormData()
+        formData.append('avatar' , file)
+        const response = await apiPrivate(multipartFormApi).put("/user/user-side/update-profile",formData);
+        return { response };
+      } catch (error) {
+        return { error };
+      }
+    }
+  );
+};
+
+export const deleteProfileImageService = ():Promise<{response?:any, error?:any}> => {
+  return authRequest(() =>
+    async () => {
+      try {
+        const response = await apiPrivate(appJsonApi).delete("/user/user-side/delete-profile");
+        return { response };
+      } catch (error) {
+        return { error };
+      }
+    }
+  );
+};
+
+export const getUserCoursesService = ():Promise<{response?:any, error?:any}> => {
+  return authRequest(() =>
+    async () => {
+      try {
+        const response = await apiPrivate(appJsonApi).get("/user/user-side/get-courses");
+        return { response };
+      } catch (error) {
+        return { error };
+      }
+    }
+  );
+};
+
+export const getUserBagCoursesService = (coursesId:number[]):Promise<{response?:any, error?:any}> => {
+  return authRequest(() =>
+    async () => {
+      try {
+        const response = await apiPrivate(appJsonApi).post("/course/user-side/bag-courses",{coursesId});
+        return { response };
+      } catch (error) {
+        return { error };
+      }
+    }
+  );
+};
+
+export const editUserInfoService = (name:string,username:string,password:string,confirmPassword:string):Promise<{response?:any, error?:any}> => {
+  return authRequest(() =>
+    async () => {
+      try {
+        const putBody : {name:string,username:string,password?:string,confirmPassword?:string} = {name,username};
+        (password) && (putBody.password = password);
+        (confirmPassword) && (putBody.confirmPassword = confirmPassword);
+
+        const response = await apiPrivate(appJsonApi).put("/user/user-side/edit-info",putBody);
+        return { response };
+      } catch (error) {
+        return { error };
+      }
+    }
+  );
+};
+
+export const logoutService = async () :Promise<{response?:any, error?:any}>=>{
+  try {
+    const response = await appJsonApi.post('/auth/logout',{},{
     withCredentials:true
   });
       return { response : response };

@@ -112,7 +112,7 @@ function VerifyPhoneForm({ forgetPass }: { forgetPass: boolean }) {
                 ) : null}
             </div>
 
-            <button type='submit' disabled={sending} className={`w-full rounded-full py-2 px-4 mt-3 border-4 border-solid border-[#0000a3] bg-[#d2eeff] text-[#0000a3] transition-all hover:bg-[#70baff] ${sending ? 'opacity-50' : ""}`}>ایجاد حساب</button>
+            <button type='submit' disabled={sending} className={`w-full rounded-full py-2 px-4 mt-3 border-4 border-solid border-[#0000a3] bg-[#d2eeff] text-[#0000a3] transition-all hover:bg-[#70baff] ${sending ? 'opacity-50' : ""}`}>{forgetPass ? 'بازیابی رمز عبور': 'ایجاد حساب'}</button>
 
             <p className="text-[#0000a3] text-[9px] sm:text-sm">از قبل حسابی دارید؟ <Link href="/login" className="text-[#522aeb] font-bold">وارد شوید.</Link></p>
 

@@ -111,3 +111,31 @@ export type SingleSessionType = {
     file: string|null,
     isFree:boolean
 }
+
+export type TicketType = {
+    id: number,
+    title: string,
+    subject: string,
+    updated_at: Date,
+    status:string
+}
+
+export type TicketMessageType = {
+    id:number,
+    sender:{
+        id:number,
+        avatar:string,
+        name:string
+    },
+    message:string,
+    created_at:Date
+}
+
+export type TicketDetailsType = {
+    id: number,
+    status:string
+    title: string,
+    user_id:number,
+    subject: string,
+    messages : TicketMessageType[]
+}

@@ -10,7 +10,7 @@ function LoginBtn() {
     return (
         <>
         {userName ? (
-            <Link href="/user-info"
+            <Link href="/user-panel"
             className="flex items-center py-1 px-2 sm:py-2 sm:px-3 text-custom-black bg-custom-blue rounded-lg hover:!text-black hover:opacity-60">
             <svg className="w-[0.8rem] lg:w-[1rem] ml-3" xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 448 512">

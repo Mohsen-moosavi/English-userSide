@@ -3,6 +3,7 @@ import useAppSelector from '@/hooks/useAppSelector'
 import { changeDateToPersianLanguage } from '@/utils/date.utils'
 import Link from 'next/link'
 import React from 'react'
+import Swal from 'sweetalert2'
 
 type PageProps = {
     courseId: number
