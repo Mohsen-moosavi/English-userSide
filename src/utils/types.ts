@@ -1,3 +1,4 @@
+
 export type SessionsType = {
     id: number,
     name: string,
@@ -77,6 +78,16 @@ export type TypeCourseBox = {
     teacherId : number,
     offPercent : number | null,
     price : string|number
+}
+
+
+export interface TypeBagCourseBox {
+    id:number
+    name : string,
+    slug : string,
+    cover : string,
+    offPrice : number | null,
+    price : string|number,
 }
 
 export type TypeBookBox = {

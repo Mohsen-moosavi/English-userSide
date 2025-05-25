@@ -36,7 +36,7 @@ function CreateComment({courseId} : {courseId : number}) {
     if (userPhone) {
         return (
             <>
-                <select defaultValue={0} value={commentScore} onChange={e=>setCommentScore(Number(e.target.value))} className='mt-3 w-full border-2 border-custom-dark-blue rounded-full p-1 bg-[#166d91]/10 text-custom-dark-blue'>
+                <select value={commentScore} onChange={e=>setCommentScore(Number(e.target.value))} className='mt-3 w-full border-2 border-custom-dark-blue rounded-full p-1 bg-[#166d91]/10 text-custom-dark-blue'>
                     <option value={0} disabled>امتیاز شما</option>
                     <option value={5}>عالی</option>
                     <option value={4}>خوب</option>

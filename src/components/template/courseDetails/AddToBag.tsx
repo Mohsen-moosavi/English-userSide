@@ -1,8 +1,10 @@
 'use client'
 import useAppSelector from '@/hooks/useAppSelector'
+import { addToBagService } from '@/services/userServices'
 import { changeDateToPersianLanguage } from '@/utils/date.utils'
 import Link from 'next/link'
 import React from 'react'
+import toast from 'react-hot-toast'
 import Swal from 'sweetalert2'
 
 type PageProps = {
@@ -14,6 +16,31 @@ type PageProps = {
 
 function AddToBag({ courseId, off, price, slug }: PageProps) {
     const { userCourses } = useAppSelector(state => state.user)
+
+
+    
+    function addToBagHandler(){
+        Swal.fire({
+                    title:'آیا از اضافه کردن دوره به سبد خرید اطمینان دارید؟',
+                    icon: 'warning',
+                    showCancelButton : true,
+                    confirmButtonText:'تایید',
+                    cancelButtonText: 'لغو'
+                }).then((result)=>{
+                    if(result.isConfirmed){
+                        addToBag()
+                    }
+                })
+    }
+
+    async function addToBag() {
+        const {response,error} = await addToBagService(courseId)
+        if(response){
+            toast.success(response.data.message)
+        }else{
+            toast.error(error.response.data.message)
+        }
+    }
 
     return (
         <>
@@ -33,13 +60,14 @@ function AddToBag({ courseId, off, price, slug }: PageProps) {
 
             {userCourses?.includes(courseId) ? (
                 <div className="flex max-sm:flex-col sm:items-center sm:justify-between mt-auto gap-y-2">
-                    <Link href={`/courses/${slug}/sessions`}
+                    <Link href={`/sessions/${slug}/1`}
                         className=" max-sm:order-2 px-3 py-2 bg-custom-dark-blue !text-white rounded-full hover:opacity-60 xl:text-xl">شما دانشجوی دوره هستید</Link>
                 </div>
             ) : (
                 <div className="flex max-sm:flex-col sm:items-center sm:justify-between mt-auto gap-y-2">
                     <button
-                        className=" max-sm:order-2 px-3 py-2 bg-custom-dark-blue text-white rounded-full hover:opacity-60 xl:text-xl">افزودن
+                    onClick={addToBagHandler}
+                        className="cursor-pointer max-sm:order-2 px-3 py-2 bg-custom-dark-blue text-white rounded-full hover:opacity-60 xl:text-xl">افزودن
                         به سبد خرید</button>
                     {off ? (
                         <div className="flex">

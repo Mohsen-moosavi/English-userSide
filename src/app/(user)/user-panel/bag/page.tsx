@@ -1,38 +1,53 @@
 'use client'
-import CourseBox from '@/components/modules/CourseBox'
-import { getUserBagCoursesService } from '@/services/userServices'
-import { TypeCourseBox } from '@/utils/types'
+import BagCourseBox from '@/components/template/userPanel/BagCourseBox'
+import PayBox from '@/components/template/userPanel/PayBox'
+import { deleteCourseFromUserBagsService, getUserBagCoursesService } from '@/services/userServices'
+import { TypeBagCourseBox } from '@/utils/types'
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
 function page() {
 
     const [loading, setLoading] = useState(true)
-    const [courses, setCourses] = useState<TypeCourseBox[]>([])
+    const [courses, setCourses] = useState<TypeBagCourseBox[]>([])
+    const [totalPrice, setTotalPrice] = useState<number>(0)
+    const [totalOff, setTotalOff] = useState<number>(0)
+    const [totalMainPrice, setTotalMainPrice] = useState<number>(0)
 
     useEffect(() => {
         getBagCourses()
     }, [])
 
     async function getBagCourses() {
-        const bagCourses = localStorage.getItem("bag");
-        if (bagCourses) {
-            const parsedBagCourses = JSON.parse(bagCourses)
-            if (Array.isArray(parsedBagCourses)) {
-                const { response,error } = await getUserBagCoursesService([])
-                if (response) {
-                    setCourses(response.data.data.courses)
-                }else{
-                    toast.error(error?.response?.data?.message || 'مشکل در دریافت سبد خرید!')
-                }
-            }
+        const { response, error } = await getUserBagCoursesService()
+        if (response) {
+            setCourses(response.data.data.courses)
+            setTotalMainPrice(response.data.data.totalMainPrice)
+            setTotalPrice(response.data.data.totalPrice)
+            setTotalOff(response.data.data.totalOff)
+        } else {
+            toast.error(error?.response?.data?.message || 'مشکل در دریافت سبد خرید!')
+        }
+        setLoading(false)
+    }
+
+    async function removeFromBagHandler(courseId: number) {
+        setLoading(true)
+        const { response, error } = await deleteCourseFromUserBagsService(courseId)
+        if (response) {
+            setCourses(response.data.data.courses)
+            setTotalMainPrice(response.data.data.totalMainPrice)
+            setTotalPrice(response.data.data.totalPrice)
+            setTotalOff(response.data.data.totalOff)
+        } else {
+            toast.error(error?.response?.data?.message || 'مشکل در دریافت سبد خرید!')
         }
         setLoading(false)
     }
 
     return (
         <>
-        <h1 className='text-center text-custom-dark-blue font-bold md:hidden mb-6'>سبد خرید</h1>
+            <h1 className='text-center text-custom-dark-blue font-bold md:hidden mb-6'>سبد خرید</h1>
             {loading ? (
                 <div className="h-[300px] w-full flex items-center justify-center">
                     <svg className='animate-spin' fill="#166d91" height="60px" width="60px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -58,20 +73,25 @@ function page() {
                 </div>
             ) : (
                 <>
-                {courses.length ? (
-                  <>
-                    <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-x-5 gap-y-5 my-5">
-                      {courses.map((course, i) => (
-                        <CourseBox {...course} key={i} />
-                      ))}
-                    </div>
-                  </>
-                ) : (
-                  <div className="h-[300px] w-full flex items-center justify-center">
-                    <span className='text-red-400 text-md'>سبد خرید شما خالی است!</span>
-                  </div>
-                )}
-              </>
+                    {courses.length ? (
+                        <>
+                            <div className='grid sm:grid-cols-10 md:grid-cols-11 lg:grid-cols-3 xl:grid-cols-4 gap-x-2 items-start gap-y-5 mb-3'>
+                                <div className="sm:col-span-6 lg:col-span-2 xl:col-span-3 grid xl:grid-cols-2 xl:gap-x-5 gap-x-2 gap-y-5">
+                                    {courses.map((course, i) => (
+                                        <BagCourseBox removeFromBagHandler={removeFromBagHandler} {...course} key={i} />
+                                    ))}
+                                </div>
+                                <div className='h-full sm:col-span-4 md:col-span-5 lg:col-span-1 xl:col-span-1 border-r-[3px] border-custom-dark-blue pr-2'>
+                                    <PayBox totalMainPrice={totalMainPrice} totalOff={totalOff} totalPrice={totalPrice}/>
+                                </div>
+                            </div>
+                        </>
+                    ) : (
+                        <div className="h-[300px] w-full flex items-center justify-center">
+                            <span className='text-red-400 text-md'>سبد خرید شما خالی است!</span>
+                        </div>
+                    )}
+                </>
             )}
         </>
     )

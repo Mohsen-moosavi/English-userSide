@@ -190,11 +190,37 @@ export const getUserCoursesService = ():Promise<{response?:any, error?:any}> => 
   );
 };
 
-export const getUserBagCoursesService = (coursesId:number[]):Promise<{response?:any, error?:any}> => {
+export const getUserBagCoursesService = ():Promise<{response?:any, error?:any}> => {
   return authRequest(() =>
     async () => {
       try {
-        const response = await apiPrivate(appJsonApi).post("/course/user-side/bag-courses",{coursesId});
+        const response = await apiPrivate(appJsonApi).post("/course/user-side/bag-courses");
+        return { response };
+      } catch (error) {
+        return { error };
+      }
+    }
+  );
+};
+
+export const deleteCourseFromUserBagsService = (courseId:number):Promise<{response?:any, error?:any}> => {
+  return authRequest(() =>
+    async () => {
+      try {
+        const response = await apiPrivate(appJsonApi).delete(`/course/user-side/bag-courses/${courseId}`);
+        return { response };
+      } catch (error) {
+        return { error };
+      }
+    }
+  );
+};
+
+export const applyOffCodeService = (code:string):Promise<{response?:any, error?:any}> => {
+  return authRequest(() =>
+    async () => {
+      try {
+        const response = await apiPrivate(appJsonApi).post(`/off/user-side/apply-off`,{code});
         return { response };
       } catch (error) {
         return { error };
@@ -212,6 +238,19 @@ export const editUserInfoService = (name:string,username:string,password:string,
         (confirmPassword) && (putBody.confirmPassword = confirmPassword);
 
         const response = await apiPrivate(appJsonApi).put("/user/user-side/edit-info",putBody);
+        return { response };
+      } catch (error) {
+        return { error };
+      }
+    }
+  );
+};
+
+export const addToBagService = (courseId:number):Promise<{response?:any, error?:any}> => {
+  return authRequest(() =>
+    async () => {
+      try {
+        const response = await apiPrivate(appJsonApi).post("/user/add-bag",{courseId});
         return { response };
       } catch (error) {
         return { error };
