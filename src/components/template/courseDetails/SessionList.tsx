@@ -49,7 +49,7 @@ function SessionList({ sessionCount, courseSlug, courseId, courseName }: PagePro
                             {moreSessions?.map((session, index) => (
                                 <div className={`py-2 border-t border-solid border-custom-dark-blue`} key={index}>
                                     {(session.isFree || userCourses?.includes(courseId)) ? (
-                                        <SessionLink courseId={courseId} courseName={courseName} courseSlug={courseSlug} number={index + 1} sessionId={session.id} sessionName={session.name} sessionTime={session.time} />
+                                        <SessionLink courseId={courseId} number={index + 1} sessionId={session.id} sessionName={session.name} sessionTime={session.time} />
                                     ) : (
                                         <div className="flex items-center gap-x-1 sm:gap-x-3 text-custom-dark-blue max-sm:text-[12px]">
                                             <span className="border-2 border-solid border-custom-dark-blue rounded-full w-[20px] h-[20px] leading-[20px] sm:w-[40px] sm:h-[40px] text-center sm:leading-[40px] text-custom-dark-blue">{index+1}</span>

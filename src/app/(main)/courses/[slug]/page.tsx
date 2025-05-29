@@ -43,7 +43,7 @@ async function page({ params }: PageProps) {
                             <div className="flex flex-col gap-y-3">
                                 <h1 className="font-bold text-lg sm:text-2xl text-custom-dark-blue">{course?.name}</h1>
                                 <p className="max-sm:text-sm text-justify sm:mt-3 text-custom-gray">{`${course?.shortDescription.slice(0, 600)}...`}</p>
-                                <AddToBag courseId={course?.id || 0} off={course?.offs[0]||null} price={course?.price || '0'} slug={slug}/>
+                                <AddToBag courseId={course?.id || 0} off={course?.offs[0]||null} price={course?.price || '0'}/>
                             </div>
 
                             <div>
@@ -159,7 +159,7 @@ async function page({ params }: PageProps) {
                                                     {course?.sessions.map((session, index) => (
                                                         <div className={`py-2 ${index === 0 ? '' : 'border-t border-solid border-custom-dark-blue'}`} key={index}>
                                                             {session.isFree ? (
-                                                                <SessionLink courseId={course.id} courseSlug={slug} sessionId={session.id} number={index+1} sessionTime={session.time} sessionName={session.name} courseName={course?.name}/>
+                                                                <SessionLink courseId={course.id} sessionId={session.id} number={index+1} sessionTime={session.time} sessionName={session.name}/>
                                                             ) : (
                                                                 <div className="flex items-center gap-x-1 sm:gap-x-3 text-custom-dark-blue max-sm:text-[12px]">
                                                                     <span className="border-2 border-solid border-custom-dark-blue rounded-full w-[20px] h-[20px] leading-[20px] sm:w-[40px] sm:h-[40px] text-center sm:leading-[40px] text-custom-dark-blue">1</span>

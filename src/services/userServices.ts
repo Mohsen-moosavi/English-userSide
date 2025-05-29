@@ -259,6 +259,21 @@ export const addToBagService = (courseId:number):Promise<{response?:any, error?:
   );
 };
 
+export const payService = (price:number,offCode?:string):Promise<{response?:any, error?:any}> => {
+  return authRequest(() =>
+    async () => {
+      try {
+        const body :{price:number,offCode?:string} = {price};
+        offCode && (body.offCode = offCode)
+        const response = await apiPrivate(appJsonApi).post("/sale/user-side",body);
+        return { response };
+      } catch (error) {
+        return { error };
+      }
+    }
+  );
+};
+
 export const logoutService = async () :Promise<{response?:any, error?:any}>=>{
   try {
     const response = await appJsonApi.post('/auth/logout',{},{

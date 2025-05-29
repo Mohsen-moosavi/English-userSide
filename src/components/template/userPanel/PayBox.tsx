@@ -1,5 +1,8 @@
 'use client'
-import { applyOffCodeService } from '@/services/userServices'
+import useAppDispatch from '@/hooks/useAppDispatch'
+import { setPayData } from '@/redux/slice/user/userSlice'
+import { applyOffCodeService, payService } from '@/services/userServices'
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import toast from 'react-hot-toast'
 
@@ -13,6 +16,8 @@ function PayBox({totalMainPrice,totalOff,totalPrice}:PageProps) {
 
     const [loading,setLoading] = useState(false)
     const [offCode,setOffCode] = useState("")
+    const dispatch = useAppDispatch()
+    const router = useRouter()
     const [priceObj,setPriceObj] = useState<{totalMainPrice:number,totalOff:number,totalPrice:number}| null >(null)
 
     async function offFormHandler(e:React.FormEvent<HTMLFormElement>){
@@ -36,6 +41,22 @@ function PayBox({totalMainPrice,totalOff,totalPrice}:PageProps) {
             toast.error(error?.response?.data?.message || 'مشکل در دریافت سبد خرید!')
         }
         setLoading(false)
+    }
+
+    async function payButtonHandler(){
+   
+        if((priceObj && priceObj.totalPrice > 0) || (!priceObj && totalPrice > 0)){
+            dispatch(setPayData({offCode, price:priceObj? priceObj.totalPrice : totalPrice}))
+            router.push('/pay')
+        }else{
+            const {response, error} = await payService(totalPrice,offCode)
+            if(response){
+                toast.success(response.data.message)
+                router.push('/user-panel/courses')
+            }else{
+                toast.error(error.response.data.message)
+            }
+        }
     }
 
     return (
@@ -69,7 +90,7 @@ function PayBox({totalMainPrice,totalOff,totalPrice}:PageProps) {
                 <span className='font-bold  text-green-700 t'>{`${priceObj? priceObj.totalPrice.toLocaleString() : totalPrice.toLocaleString()} تومان`}</span>
             </div>
 
-            <button type='button' className='w-full bg-green-800 text-white hover:opacity-70 p-2 rounded-md mt-2 cursor-pointer'>پرداخت</button>
+            <button type='button' className='w-full bg-green-800 text-white hover:opacity-70 p-2 rounded-md mt-2 cursor-pointer' onClick={payButtonHandler}>پرداخت</button>
 
             {loading ?  (
             <div className='absolute top-0 left-0 bottom-0 right-0 bg-[#fff5ab] rounded-lg flex items-center'>

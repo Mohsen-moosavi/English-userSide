@@ -7,12 +7,10 @@ import React, { useEffect, useState } from 'react'
 
 type PageProps = {
   sessionId: number,
-  courseName: string,
-  courseSlug: string,
   courseId: number
 }
 
-function VideoBox({ sessionId, courseName, courseSlug, courseId }: PageProps) {
+function VideoBox({ sessionId, courseId }: PageProps) {
 
   const { userCourses } = useAppSelector(state => state.user)
   const [allSessions, setAllSessions] = useState<SessionsType[]>([])
@@ -24,8 +22,7 @@ function VideoBox({ sessionId, courseName, courseSlug, courseId }: PageProps) {
   }, [])
 
   async function getSessionInfo() {
-    const { response, error } = await getSingleSession(sessionId)
-    console.log('sessionDetails========================>', error)
+    const { response, error } = await getSingleSession(sessionId,courseId)
     if (response) {
       setAllSessions(response.data.data.allSessions)
       setSessionDetails(response.data.data.session)
@@ -89,7 +86,7 @@ function VideoBox({ sessionId, courseName, courseSlug, courseId }: PageProps) {
                   {allSessions.map((session, i) => (
                     <div key={i} className="py-2 border-b border-solid border-custom-dark-blue">
                       {(session.isFree || userCourses?.includes(courseId)) ? (
-                        <SessionLink courseId={courseId} courseName={courseName} number={i + 1} sessionId={session.id} sessionName={session.name} sessionTime={session.time} courseSlug={courseSlug} />
+                        <SessionLink courseId={courseId} number={i + 1} sessionId={session.id} isActive={sessionDetails?.name=== session.name} sessionName={session.name} sessionTime={session.time} />
                       ) : (
                         <div className="flex items-center gap-x-1 sm:gap-x-3 text-custom-dark-blue max-sm:text-[12px]">
                           <span className="border-2 border-solid border-custom-dark-blue rounded-full w-[20px] h-[20px] leading-[20px] sm:w-[40px] sm:h-[40px] text-center sm:leading-[40px] text-custom-dark-blue">{i + 1}</span>

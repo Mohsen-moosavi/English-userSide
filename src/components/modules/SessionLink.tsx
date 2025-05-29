@@ -6,16 +6,15 @@ import React from 'react'
 import toast from 'react-hot-toast'
 
 type PageProps = {
-    courseSlug: string,
     sessionId: number,
     number: number,
     sessionTime: string,
     sessionName: string,
-    courseName:string,
-    courseId:number
+    courseId:number,
+    isActive?:boolean
 }
 
-function SessionLink({ courseSlug, sessionId, number, sessionTime, sessionName,courseName,courseId }: PageProps) {
+function SessionLink({ sessionId, number, sessionTime, sessionName,courseId,isActive }: PageProps) {
 
     const { userPhone } = useAppSelector(state => state.user)
     const router = useRouter()
@@ -29,7 +28,7 @@ function SessionLink({ courseSlug, sessionId, number, sessionTime, sessionName,c
     }
 
     return (
-        <Link href={`/sessions/${courseSlug}/${sessionId}`} onClick={e => pushToSessionPage(e, `/sessions/${courseSlug}/${sessionId}?courseName=${courseName}&sessionName=${sessionName}&ci=${courseId}`)} className="flex items-center gap-x-1 sm:gap-x-3 text-custom-dark-blue max-sm:text-[12px] hover:bg-sky-400/10">
+        <Link href={`/sessions/${courseId}/${sessionId}`} onClick={e => pushToSessionPage(e, `/sessions/${courseId}/${sessionId}`)} className={`flex items-center gap-x-1 sm:gap-x-3 text-custom-dark-blue max-sm:text-[12px] rounded-2xl hover:bg-sky-400/20 ${isActive?'bg-sky-400/30':''}`}>
             <span className="border-2 border-solid border-custom-dark-blue rounded-full w-[20px] h-[20px] leading-[20px] sm:w-[40px] sm:h-[40px] text-center sm:leading-[40px] text-custom-dark-blue">{number}</span>
             <h4>{sessionName}</h4>
             <span className="text-custom-gray mr-auto">{sessionTime}</span>

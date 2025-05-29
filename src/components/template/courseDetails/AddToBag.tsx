@@ -11,10 +11,9 @@ type PageProps = {
     courseId: number
     off: { id: number, percent: number, expire: Date } | null,
     price: string,
-    slug: string,
 }
 
-function AddToBag({ courseId, off, price, slug }: PageProps) {
+function AddToBag({ courseId, off, price }: PageProps) {
     const { userCourses } = useAppSelector(state => state.user)
 
 
@@ -60,7 +59,7 @@ function AddToBag({ courseId, off, price, slug }: PageProps) {
 
             {userCourses?.includes(courseId) ? (
                 <div className="flex max-sm:flex-col sm:items-center sm:justify-between mt-auto gap-y-2">
-                    <Link href={`/sessions/${slug}/1`}
+                    <Link href={`/sessions/${courseId}/0`}
                         className=" max-sm:order-2 px-3 py-2 bg-custom-dark-blue !text-white rounded-full hover:opacity-60 xl:text-xl">شما دانشجوی دوره هستید</Link>
                 </div>
             ) : (

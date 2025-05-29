@@ -13,7 +13,8 @@ interface UserState {
   userRole: string|null,
   userLevel: string|null,
   userCourses : number[]|null,
-  userCreated_at : Date|null
+  userCreated_at : Date|null,
+  payData:{price: number , offCode:string}|null
 }
 
 const initialState: UserState = {
@@ -26,7 +27,8 @@ const initialState: UserState = {
   userRole: null,
   userLevel: null,
   userCourses : null,
-  userCreated_at : null
+  userCreated_at : null,
+  payData:null
 };
 
 const userSlice = createSlice({
@@ -40,6 +42,9 @@ const userSlice = createSlice({
       state.userScore= null
       state.userRole= null
       state.userLevel= null
+    },
+    setPayData: (state,action) => {
+      state.payData = action.payload
     }
   },
   extraReducers: (builder) => {
@@ -181,5 +186,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { logout } = userSlice.actions;
+export const { logout , setPayData } = userSlice.actions;
 export default userSlice.reducer;
