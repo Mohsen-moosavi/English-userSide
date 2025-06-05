@@ -1,6 +1,8 @@
 'use client'
 import BagCourseBox from '@/components/template/userPanel/BagCourseBox'
 import PayBox from '@/components/template/userPanel/PayBox'
+import useAppDispatch from '@/hooks/useAppDispatch'
+import { setBagCount } from '@/redux/slice/user/userSlice'
 import { deleteCourseFromUserBagsService, getUserBagCoursesService } from '@/services/userServices'
 import { TypeBagCourseBox } from '@/utils/types'
 import React, { useEffect, useState } from 'react'
@@ -8,6 +10,7 @@ import toast from 'react-hot-toast'
 
 function page() {
 
+    const dispatch = useAppDispatch()
     const [loading, setLoading] = useState(true)
     const [courses, setCourses] = useState<TypeBagCourseBox[]>([])
     const [totalPrice, setTotalPrice] = useState<number>(0)
@@ -35,6 +38,7 @@ function page() {
         setLoading(true)
         const { response, error } = await deleteCourseFromUserBagsService(courseId)
         if (response) {
+            dispatch(setBagCount(response.data.data.bagCount))
             setCourses(response.data.data.courses)
             setTotalMainPrice(response.data.data.totalMainPrice)
             setTotalPrice(response.data.data.totalPrice)

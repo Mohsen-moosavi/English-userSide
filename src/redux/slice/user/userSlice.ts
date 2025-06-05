@@ -1,6 +1,6 @@
 // src/redux/features/user/userSlice.ts
 import { createSlice } from "@reduxjs/toolkit";
-import { deleteProfileImageThunk, editUserInfoThunk, getUserCoursesThunk, getUserInfoThunk, loginThunk, logoutThunk, registerThunk, resendCodeThunk, resendForgetpassCodeThunk, resetPasswordThunk, uploadProfileImageThunk } from "./userThunks";
+import { addToBagThunk, deleteProfileImageThunk, editUserInfoThunk, getUserCoursesThunk, getUserInfoThunk, loginThunk, logoutThunk, registerThunk, resendCodeThunk, resendForgetpassCodeThunk, resetPasswordThunk, uploadProfileImageThunk } from "./userThunks";
 import toast from "react-hot-toast";
 
 interface UserState {
@@ -14,6 +14,7 @@ interface UserState {
   userLevel: string|null,
   userCourses : number[]|null,
   userCreated_at : Date|null,
+  bagCount: number,
   payData:{price: number , offCode:string}|null
 }
 
@@ -28,7 +29,8 @@ const initialState: UserState = {
   userLevel: null,
   userCourses : null,
   userCreated_at : null,
-  payData:null
+  payData:null,
+  bagCount: 0,
 };
 
 const userSlice = createSlice({
@@ -45,6 +47,9 @@ const userSlice = createSlice({
     },
     setPayData: (state,action) => {
       state.payData = action.payload
+    },
+    setBagCount: (state,action) => {
+      state.bagCount = action.payload
     }
   },
   extraReducers: (builder) => {
@@ -59,6 +64,7 @@ const userSlice = createSlice({
       state.userCourses = action.payload.data.user.courses;
       state.userUsername = action.payload.data.user.username;
       state.userCreated_at = action.payload.data.user.created_at;
+      state.bagCount = action.payload.data.user.bagCount
       })
 
 
@@ -72,6 +78,7 @@ const userSlice = createSlice({
         state.userCourses = action.payload.user.courses;
         state.userUsername = action.payload.user.username;
         state.userCreated_at = action.payload.user.created_at;
+      state.bagCount = action.payload.user.bagCount
       })
       .addCase(loginThunk.rejected, (_, action) => {
         toast.error(action.payload as string || "Something went wrong")
@@ -105,6 +112,7 @@ const userSlice = createSlice({
         state.userCourses = action.payload.data.user.courses;
         state.userUsername = action.payload.data.user.username;
         state.userCreated_at = action.payload.data.user.created_at;
+        state.bagCount = action.payload.data.user.bagCount
       })
       .addCase(registerThunk.rejected, (_, action) => {
         toast.error(action.payload as string || "Something went wrong")
@@ -121,6 +129,7 @@ const userSlice = createSlice({
         state.userCourses = action.payload.data.user.courses;
         state.userUsername = action.payload.data.user.username;
         state.userCreated_at = action.payload.data.user.created_at;
+        state.bagCount = action.payload.data.user.bagCount
         })
       .addCase(resetPasswordThunk.rejected, (_, action) => {
         toast.error(action.payload as string || "Something went wrong")
@@ -168,6 +177,15 @@ const userSlice = createSlice({
       })
 
 
+      .addCase(addToBagThunk.fulfilled, (state, action) => {
+        toast.success(action.payload.message)
+        state.bagCount = action.payload.data.bagCount;
+        })
+      .addCase(addToBagThunk.rejected, (_, action) => {
+        toast.error(action.payload as string || "Something went wrong")
+      })
+
+
       .addCase(logoutThunk.fulfilled, (state, action) => {
         toast.success('شما با موفقیت از حساب تان، خارج شدید.')
         state.userName = null;
@@ -179,6 +197,7 @@ const userSlice = createSlice({
         state.userCourses = null;
         state.userUsername = null;
         state.userCreated_at = null;
+        state.bagCount = 0
         })
       .addCase(logoutThunk.rejected, (_, action) => {
         toast.error(action.payload as string || "Something went wrong")
@@ -186,5 +205,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { logout , setPayData } = userSlice.actions;
+export const { logout , setPayData, setBagCount } = userSlice.actions;
 export default userSlice.reducer;

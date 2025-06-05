@@ -274,6 +274,19 @@ export const payService = (price:number,offCode?:string):Promise<{response?:any,
   );
 };
 
+export const sendContactService = (email:string,message:string):Promise<{response?:any, error?:any}> => {
+  return authRequest(() =>
+    async () => {
+      try {
+        const response = await apiPrivate(appJsonApi).post("/contact",{email,message});
+        return { response };
+      } catch (error) {
+        return { error };
+      }
+    }
+  );
+};
+
 export const logoutService = async () :Promise<{response?:any, error?:any}>=>{
   try {
     const response = await appJsonApi.post('/auth/logout',{},{

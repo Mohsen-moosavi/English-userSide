@@ -1,5 +1,5 @@
 // src/redux/features/user/userThunks.ts
-import { checkOtpService, deleteProfileImageService, editUserInfoService, forgetPasswordService, getCaptchaService, getUserCoursesService, getUserInfo, loginService, logoutService, registerService, resendCodeService, resendForgetpassCodeService, resetPasswordService, uploadProfileImageService, verifyForgetCodeService, verifyPhoneService } from "@/services/userServices";
+import { addToBagService, checkOtpService, deleteProfileImageService, editUserInfoService, forgetPasswordService, getCaptchaService, getUserCoursesService, getUserInfo, loginService, logoutService, registerService, resendCodeService, resendForgetpassCodeService, resetPasswordService, uploadProfileImageService, verifyForgetCodeService, verifyPhoneService } from "@/services/userServices";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
 
@@ -217,6 +217,19 @@ export const editUserInfoThunk = createAsyncThunk(
   async ({name,username,password,confirmPassword}:{name:string,username:string,password:string,confirmPassword:string}, thunkAPI) => {
     try {
       const { response, error } = await editUserInfoService(name,username,password,confirmPassword);
+      if (error) throw error;
+      return response.data;
+    } catch (err: any) {
+      return thunkAPI.rejectWithValue(err?.response?.data?.message || err.message);
+    }
+  }
+);
+
+export const addToBagThunk = createAsyncThunk(
+  "user/addToBag",
+  async ({courseId}:{courseId : number}, thunkAPI) => {
+    try {
+      const { response, error } = await addToBagService(courseId);
       if (error) throw error;
       return response.data;
     } catch (err: any) {

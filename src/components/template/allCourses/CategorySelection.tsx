@@ -19,7 +19,7 @@ function CategorySelection() {
     }
   
     return (
-      <select defaultValue={category} onChange={changeCategoryHandler} className="py-2 px-3 w-full md:max-w-[300px] bg-transparent border-t border-custom-dark-blue">
+      <select value={category} onChange={changeCategoryHandler} className="py-2 px-3 w-full md:max-w-[300px] bg-transparent border-t border-custom-dark-blue">
         <option value="">همه سطوح</option>
         <option value='children'>دوره های کودکان</option>
         <option value='ease'>سطح مقدماتی</option>

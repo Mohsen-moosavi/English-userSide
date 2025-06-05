@@ -1,10 +1,11 @@
 'use client'
+import useAppDispatch from '@/hooks/useAppDispatch'
 import useAppSelector from '@/hooks/useAppSelector'
+import { addToBagThunk } from '@/redux/slice/user/userThunks'
 import { addToBagService } from '@/services/userServices'
 import { changeDateToPersianLanguage } from '@/utils/date.utils'
 import Link from 'next/link'
 import React from 'react'
-import toast from 'react-hot-toast'
 import Swal from 'sweetalert2'
 
 type PageProps = {
@@ -15,6 +16,7 @@ type PageProps = {
 
 function AddToBag({ courseId, off, price }: PageProps) {
     const { userCourses } = useAppSelector(state => state.user)
+    const dispatch = useAppDispatch()
 
 
     
@@ -33,12 +35,7 @@ function AddToBag({ courseId, off, price }: PageProps) {
     }
 
     async function addToBag() {
-        const {response,error} = await addToBagService(courseId)
-        if(response){
-            toast.success(response.data.message)
-        }else{
-            toast.error(error.response.data.message)
-        }
+        dispatch(addToBagThunk({courseId}))
     }
 
     return (

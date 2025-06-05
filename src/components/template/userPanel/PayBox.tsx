@@ -1,6 +1,6 @@
 'use client'
 import useAppDispatch from '@/hooks/useAppDispatch'
-import { setPayData } from '@/redux/slice/user/userSlice'
+import { setBagCount, setPayData } from '@/redux/slice/user/userSlice'
 import { applyOffCodeService, payService } from '@/services/userServices'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
@@ -52,6 +52,7 @@ function PayBox({totalMainPrice,totalOff,totalPrice}:PageProps) {
             const {response, error} = await payService(totalPrice,offCode)
             if(response){
                 toast.success(response.data.message)
+                dispatch(setBagCount(0))
                 router.push('/user-panel/courses')
             }else{
                 toast.error(error.response.data.message)

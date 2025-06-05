@@ -1,5 +1,7 @@
 'use client'
+import useAppDispatch from '@/hooks/useAppDispatch'
 import useAppSelector from '@/hooks/useAppSelector'
+import { setBagCount } from '@/redux/slice/user/userSlice'
 import { payService } from '@/services/userServices'
 import { useRouter } from 'next/navigation'
 import React from 'react'
@@ -9,11 +11,13 @@ function page() {
 
   const {payData} = useAppSelector(state=>state.user)
   const router = useRouter()
+  const dispatch = useAppDispatch()
 
   async function payHandler(){
     const {response,error} = await payService(payData?.price || 0 , payData?.offCode)
     if(response){
       toast.success(response.data.message)
+      dispatch(setBagCount(0))
       router.replace('/user-panel/courses')
     }else{
       toast.error(error.response.data.message)

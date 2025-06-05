@@ -7,8 +7,10 @@ import HeaderMobileMenuContainer from './HeaderMobileMenuContainer'
 import HeaderMenuBtn from './HeaderMenuBtn'
 import Link from 'next/link'
 import LoginBtn from '../template/header/LoginBtn'
+import HeaderLink from './HeaderLink'
 
 function Header() {
+
     return (
         <header className="font-bold py-3 ">
             <div className="container mx-auto">
@@ -17,26 +19,23 @@ function Header() {
                         <HeaderMenuBtn/>
                         <ul className="hidden md:flex justify-between items-center text-[12px] lg:text-sm gap-x-3 lg:gap-x-5">
                             <li>
-                                <a href="#" className="">دوره ها</a>
+                                <Link href="/courses" className="">دوره ها</Link>
                             </li>
                             <li>
-                                <a href="#">کتاب ها</a>
+                                <Link href="/books">کتاب ها</Link>
                             </li>
                             <li>
-                                <a href="#">مقالات</a>
+                                <Link href="/articles">مقالات</Link>
                             </li>
                             <li>
-                                <a href="#">تماس با ما</a>
+                                <Link href="/contact">تماس با ما</Link>
                             </li>
                             <li>
-                                <a href="#">درباره ما</a>
-                            </li>
-                            <li>
-                                <a href="#">پرسش و پاسخ</a>
+                                <Link href="/about-us">درباره ما</Link>
                             </li>
                         </ul>
                         <Image src={logo2Image} alt="logo" className="w-[80px] sm:w-[120px] md:hidden" />
-                        <div className="gap-x-2 lg:gap-x-6 flex justify-between items-center text-sm">
+                        <div className="gap-x-1 lg:gap-x-2 flex justify-between items-center text-sm">
                             <span className="hidden md:block text-gray-600 font-bold">پشتیبانی سریع <span
                                 className="text-custom-dark-blue">7783654</span> 021</span>
                             <LoginBtn/>
@@ -51,19 +50,19 @@ function Header() {
                             <nav>
                                 <ul className="flex justify-start align-items-center gap-x-5 lg:text-lg text-sm">
                                     <li>
-                                        <a href="#" className="text-custom-dark-blue hover:text-sky-500">دوره های کودکان</a>
+                                        <HeaderLink title='دوره های کودکان' category={'children'}/>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-custom-dark-blue hover:text-sky-500">سطح مقدماتی</a>
+                                        <HeaderLink title='سطح مقدماتی' category={'ease'}/>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-custom-dark-blue hover:text-sky-500">سطح متوسط</a>
+                                        <HeaderLink title='سطح متوسط' category={'medum'}/>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-custom-dark-blue hover:text-sky-500">سطح پیشرفته</a>
+                                        <HeaderLink title='سطح پیشرفته' category={'high'}/>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-custom-dark-blue hover:text-sky-500">دوره های آیلتس</a>
+                                        <HeaderLink title='دوره های رایگان' category={'free'}/>
                                     </li>
                                 </ul>
                             </nav>
