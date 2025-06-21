@@ -2,6 +2,7 @@
 import useAppDispatch from '@/hooks/useAppDispatch'
 import useAppSelector from '@/hooks/useAppSelector'
 import { changePaginatorChangerFlag, setCategory } from '@/redux/slice/allCourses/allCourseSlice'
+import { closeMenu } from '@/redux/slice/ui/uiSlice'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import React from 'react'
@@ -26,6 +27,8 @@ function HeaderLink({title,category}:PageProps) {
         }else{
             router.push('/courses')
         }
+
+        dispatch(closeMenu())
         
     }
 

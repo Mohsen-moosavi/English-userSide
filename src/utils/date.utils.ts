@@ -4,7 +4,6 @@ import moment from "moment-jalaali";
 export function changeDateToPersianLanguage(date: Date) {
     const shamsiDate = moment(date).format('jYYYY-jMM-jDD');
     const [, month, day] = shamsiDate.split('-')
-    console.log('date======================>' , month,day,shamsiDate)
 
     let persianMonth = ''
     switch (month) {

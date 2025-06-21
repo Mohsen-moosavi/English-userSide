@@ -47,6 +47,23 @@ button{
   transition: all ease 300ms;
 }
 
+.mobile-menu li{
+  /* border-bottom: 2px solid #7AD6FD; */
+  margin: 5px 0;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.mobile-menu li a{
+  color: #fff;
+}
+
+.mobile-menu li a:hover{
+  opacity: 70%;
+}
+
 
 /* <====== end default ======> */
 
@@ -181,6 +198,14 @@ footer ul li{
 
 .ticket-red-gradient{
   background: linear-gradient(to bottom, rgb(253, 171, 128),rgb(255, 255, 255,0));
+}
+
+.not-found-404{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.not-found-text-shadow{
+  text-shadow: 0 0 15px #166d91;
 }
 /* <====== end helpers ======> */
 

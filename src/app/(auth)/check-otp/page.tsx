@@ -1,9 +1,6 @@
 import CheckOtpForm from '@/components/template/auth/check-otp/CheckOtpForm'
 
 const CheckOtp = ()=> {
-    // useEffect(()=>{
-    //     console.log("props=========================>" , props)
-    // },[])
   return (
 <div className="w-full h-[100vh] auth-pages z-1 bg-white fixed top-0 left-0">
     <div className='w-full h-full bg-[#ffe4012b] p-3 flex items-center justify-center overflow-y-auto'>

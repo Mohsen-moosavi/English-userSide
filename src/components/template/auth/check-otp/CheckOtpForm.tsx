@@ -147,8 +147,8 @@ function CheckOtpForm() {
             </div>}
 
             {disableTimeLeft > 0 ?
-                <button type='button' disabled={sending} onClick={submitHandler} className="rounded-full py-2 px-4 border-4 border-solid border-[#0000a3] bg-[#d2eeff] text-[#0000a3] transition-all hover:bg-[#70baff] w-full max-w-340">ورود به حساب</button> :
-                <button type='button' disabled={sending} onClick={resendCodeHandler} className="rounded-full py-2 px-4 border-4 border-solid border-[#0000a3] bg-[#d2eeff] text-[#0000a3] transition-all hover:bg-[#70baff] w-full max-w-340 ">ارسال مجدد کد</button>
+                <button type='button' disabled={sending} onClick={submitHandler} className="cursor-pointer rounded-full py-2 px-4 border-4 border-solid border-[#0000a3] bg-[#d2eeff] text-[#0000a3] transition-all hover:bg-[#70baff] w-full max-w-340">ورود به حساب</button> :
+                <button type='button' disabled={sending} onClick={resendCodeHandler} className="cursor-pointer rounded-full py-2 px-4 border-4 border-solid border-[#0000a3] bg-[#d2eeff] text-[#0000a3] transition-all hover:bg-[#70baff] w-full max-w-340 ">ارسال مجدد کد</button>
             }
 
 

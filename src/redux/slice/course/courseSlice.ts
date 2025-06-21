@@ -34,27 +34,9 @@ const courseSlice = createSlice({
       })
 
 
-      // .addCase(getMoreCommentThunk.fulfilled, (state, action) => {
-      //   console.log('commenttttt============================>',[...state.comments,...action.payload.data.comments])
-      //   state.comments = [...state.comments,...action.payload.data.comments]
-      // })
-
       .addCase(getMoreCommentThunk.rejected, (_, action) => {
         toast.error(action.payload as string)
       })
-
-
-    //   .addCase(loginThunk.fulfilled, (state, action) => {
-    //     state.userName = action.payload.user.name;
-    //     state.userPhone = action.payload.user.phone;
-    //     state.userAvatar = action.payload.user.avatar;
-    //     state.userScore = action.payload.user.score;
-    //     state.userRole = action.payload.user.role;
-    //     state.userLevel = action.payload.user.level;
-    //   })
-    //   .addCase(loginThunk.rejected, (state, action) => {
-    //     toast.error(action.payload as string || "Something went wrong")
-    //   })
   },
 });
 

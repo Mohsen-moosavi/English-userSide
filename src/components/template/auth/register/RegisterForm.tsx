@@ -143,7 +143,7 @@ function RegisterForm() {
                     </div>
                 ) : null}
             </div>
-            <button type='submit' disabled={sending} className={`rounded-full py-2 px-4 border-4 border-solid border-[#0000a3] bg-[#d2eeff] text-[#0000a3] transition-all hover:bg-[#70baff] ${sending ? 'opacity-60' : ''}`}>ایجاد حساب</button>
+            <button type='submit' disabled={sending} className={`cursor-pointer rounded-full py-2 px-4 border-4 border-solid border-[#0000a3] bg-[#d2eeff] text-[#0000a3] transition-all hover:bg-[#70baff] ${sending ? 'opacity-60' : ''}`}>ایجاد حساب</button>
 
 
         </form>

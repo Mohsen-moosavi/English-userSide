@@ -17,7 +17,7 @@ function ArticleBox({title,shortDescription,slug,cover,author,created_at}: TypeA
   return (
     <div className="shadow-center rounded-2xl overflow-hidden transition-all hover:-translate-y-2">
     <Link href={`/articles/${slug}`} className="text-center relative">
-        <Image src={cover} alt="books" className="min-w-full max-h-[200px]" width={350} height={200}/>
+        <Image src={cover} alt="books" className="min-w-full max-h-[200px] " width={350} height={200}/>
         <div
             className="p-2 rounded-b-lg relative shadow-[0_10px_60px_35px_#000]">
             <h3 className="max-sm:text-sm text-start text-custom-dark-blue font-bold mb-2 truncate">{title}</h3>

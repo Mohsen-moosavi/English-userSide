@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import AuthProvider from "@/components/modules/AuthProvider";
 import { ReduxProvider } from "@/redux/ReduxProvider";
+import BodyDarker from "@/components/modules/BodyDarker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({
       >
         <ReduxProvider>
         {children}
+        <BodyDarker/>
         <AuthProvider/>
         <Toaster
           position="bottom-left"

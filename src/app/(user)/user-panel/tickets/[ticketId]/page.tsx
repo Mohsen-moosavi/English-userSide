@@ -26,7 +26,6 @@ function page() {
         const { response } = await getSingleTicketService(Number(ticketId))
         if (response) {
             setTicketDetails(response.data.data.ticket)
-            console.log("ticket================================>", response.data.data.ticket)
         }
         setLoading(false)
     }

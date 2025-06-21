@@ -99,16 +99,16 @@ function LoginForm() {
     </div>
 
     <div className="w-full flex items-center gap-x-1 text-[#0000a3]">
-        <input type="checkbox" id="remember-me-id" onChange={()=>setIsChecked(prevValue=>!prevValue)} />
+        <input type="checkbox" className='cursor-pointer' id="remember-me-id" onChange={()=>setIsChecked(prevValue=>!prevValue)} />
         <label htmlFor="remember-me-id">من را به خاطر بسپار</label>
     </div>
 
 
-    <button type='submit' disabled={sending} className={`w-full rounded-full py-2 px-4 border-4 border-solid border-[#0000a3] bg-[#d2eeff] text-[#0000a3] transition-all hover:bg-[#70baff] ${sending ? 'opacity-60' : ''}`}>ورود</button>
+    <button type='submit' disabled={sending} className={`cursor-pointer w-full rounded-full py-2 px-4 border-4 border-solid border-[#0000a3] bg-[#d2eeff] text-[#0000a3] transition-all hover:bg-[#70baff] ${sending ? 'opacity-60' : ''}`}>ورود</button>
 
     <div className="flex items-center justify-center gap-x-5 w-full max-w-[400px] max-sm:text-[10px]">
-        <Link href="/forget-password" className="text-[#0000a3]">فراموشی رمز عبور</Link>
-        <p className="text-[#0000a3] text-[9px] sm:text-sm">حساب کاربری ندارید؟ <Link href="/verify-phone" className="text-[#522aeb] font-bold">ثبت نام کنید</Link></p>
+        <Link href="/forget-password" className="!text-[#0000a3] font-bold">فراموشی رمز عبور</Link>
+        <p className="text-[#0000a3] text-[9px] sm:text-sm">حساب کاربری ندارید؟ <Link href="/verify-phone" className="!text-[#0000a3] font-bold">ثبت نام کنید</Link></p>
     </div>
 
 

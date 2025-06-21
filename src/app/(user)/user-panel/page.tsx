@@ -6,7 +6,6 @@ import React from 'react'
 function page() {
 
     const {userLevel ,userCreated_at, userPhone,userUsername,userScore} = useAppSelector(state=>state.user)
-    console.log("created_at================>" , userCreated_at)
 
     return (
         <div className='grid sm:grid-cols-3 sm:gap-y-5 max-md:mt-25'>

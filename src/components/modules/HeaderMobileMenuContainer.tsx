@@ -14,9 +14,9 @@ export default function HeaderMobileMenuContainer({ children }: { children: Reac
 
 
     return (
-        <div className={`fixed top-0 right-[-250px] ${isMenuMobileOpen ? '!right-0' : ''} z-10 py-4 overflow-auto h-[100vh] w-[250px] flex flex-col items-start justify-start bg-[#5e9ab5] transition-all`}
+        <div className={`fixed top-0 right-[-250px] ${isMenuMobileOpen ? '!right-0' : ''} z-10 py-4 overflow-y-auto h-[100vh] w-[250px] flex flex-col items-start justify-start bg-[#003e5e] transition-all`}
     id="mobile-menu">
-            <span className="absolute top-5 left-3" id="close-menu" onClick={() => dispatch(closeMenu())}>
+            <span className="absolute top-5 left-3 z-101" id="close-menu" onClick={() =>{dispatch(closeMenu())}}>
                 <Image src={closeImage} alt="close" />
             </span>
             {children}
