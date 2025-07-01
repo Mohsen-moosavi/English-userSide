@@ -26,8 +26,8 @@ function Menu() {
         })
 
         async function logOut() {
-            router.replace('/')
             await dispatch(logoutThunk())
+            router.replace('/')
         }
     }
 

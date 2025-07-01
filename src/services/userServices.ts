@@ -26,6 +26,8 @@ export const loginService = async (phone : string , password : string) :Promise<
         },{
           withCredentials:true
         });
+
+        console.log("response==============================>" , response)
         return { response : response.data };
     } catch (error) {
         return {error};

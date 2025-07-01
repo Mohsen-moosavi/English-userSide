@@ -6,6 +6,11 @@ import React from 'react'
 function LoginBtn() {
 
     const {userName,bagCount} = useAppSelector(state=>state.user)
+    // const dispatch = useAppDispatch()
+
+    // useEffect(()=>{
+    //     dispatch(getUserInfoThunk())
+    // },[])
 
     return (
         <>
