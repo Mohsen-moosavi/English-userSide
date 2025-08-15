@@ -11,7 +11,7 @@ export const getSingleCourseService = async (slug: string): Promise<{ responseDa
       cache: 'force-cache'
     });
     const data = await response.json()
-    const responseData: CourseType = { ...data.data.course, sessionCount: data.data.sessionCount, commentCount: data.data.commentCount, time: data.data.time }
+    const responseData: CourseType = { ...data.data.course, bookFiles:data.data.bookFiles, sessionCount: data.data.sessionCount, commentCount: data.data.commentCount, time: data.data.time }
     return { responseData };
   } catch (error) {
     return { error };

@@ -67,6 +67,19 @@ const userSlice = createSlice({
       state.bagCount = action.payload.data.user.bagCount
       })
 
+      .addCase(getUserInfoThunk.rejected, (state, action) => {
+        state.userName = null;
+        state.userPhone = null;
+        state.userAvatar = null;
+        state.userScore = null;
+        state.userRole = null;
+        state.userLevel = null;
+        state.userCourses = null;
+        state.userUsername = null;
+        state.userCreated_at = null;
+        state.bagCount = 0
+      })
+
 
       .addCase(loginThunk.fulfilled, (state, action) => {
         state.userName = action.payload.user.name;
@@ -187,7 +200,6 @@ const userSlice = createSlice({
 
 
       .addCase(logoutThunk.fulfilled, (state, action) => {
-        toast.success('شما با موفقیت از حساب تان، خارج شدید.')
         state.userName = null;
         state.userPhone = null;
         state.userAvatar = null;

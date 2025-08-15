@@ -3,7 +3,7 @@ import constant from "@/utils/constant";
 export const getLastCourseService = async () :Promise<{responseData?:any, error?:any}>=>{
     try {
         const response = await fetch(`${constant.BASE_API_URL}/course/last-course`,{
-            next : {revalidate : 86400},
+            next : {revalidate : 300},
             cache : 'force-cache'
         });
         const data = await response.json()
@@ -16,7 +16,7 @@ export const getLastCourseService = async () :Promise<{responseData?:any, error?
 export const getLastBookService = async () :Promise<{responseData?:any, error?:any}>=>{
     try {
         const response = await fetch(`${constant.BASE_API_URL}/book/last-book`,{
-            next : {revalidate : 86400},
+            next : {revalidate : 300},
             cache : 'force-cache'
         });
         const data = await response.json()
@@ -29,7 +29,7 @@ export const getLastBookService = async () :Promise<{responseData?:any, error?:a
 export const getLastArticleService = async () :Promise<{responseData?:any, error?:any}>=>{
     try {
         const response = await fetch(`${constant.BASE_API_URL}/article/last-artilce`,{
-            next : {revalidate : 86400},
+            next : {revalidate : 300},
             cache : 'force-cache'
         });
         const data = await response.json()

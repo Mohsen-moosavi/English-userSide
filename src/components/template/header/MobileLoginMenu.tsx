@@ -2,17 +2,22 @@
 import useAppDispatch from '@/hooks/useAppDispatch'
 import useAppSelector from '@/hooks/useAppSelector'
 import { closeMenu } from '@/redux/slice/ui/uiSlice'
+import { getUserInfoThunk } from '@/redux/slice/user/userThunks'
 import userProfile from '@images/user-profile.png'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 function MobileLoginMenu() {
 
     const {userName,userAvatar,bagCount} = useAppSelector(state=>state.user)
     const dispatch = useAppDispatch()
     const router = useRouter()
+
+    useEffect(()=>{
+      dispatch(getUserInfoThunk())
+    },[])
 
     function goToHeaderLink(e:React.MouseEvent<HTMLAnchorElement, MouseEvent>,url:string){
       e.preventDefault()

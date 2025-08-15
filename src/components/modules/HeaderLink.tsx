@@ -1,6 +1,5 @@
 'use client'
 import useAppDispatch from '@/hooks/useAppDispatch'
-import useAppSelector from '@/hooks/useAppSelector'
 import { changePaginatorChangerFlag, setCategory } from '@/redux/slice/allCourses/allCourseSlice'
 import { closeMenu } from '@/redux/slice/ui/uiSlice'
 import Link from 'next/link'

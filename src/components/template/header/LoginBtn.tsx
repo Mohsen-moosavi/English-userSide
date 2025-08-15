@@ -1,7 +1,9 @@
 'use client'
+import useAppDispatch from '@/hooks/useAppDispatch'
 import useAppSelector from '@/hooks/useAppSelector'
+import { getUserInfoThunk } from '@/redux/slice/user/userThunks'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 function LoginBtn() {
 

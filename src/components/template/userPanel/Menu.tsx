@@ -26,8 +26,22 @@ function Menu() {
         })
 
         async function logOut() {
-            await dispatch(logoutThunk())
-            router.replace('/')
+            try {
+                await dispatch(logoutThunk())
+                Swal.fire({
+                    title: 'شما با موفقیت از حسابتان خارج شدید.',
+                    icon: 'success',
+                    confirmButtonText: 'تایید',
+                }).then(() => {
+                    router.replace('/')
+                })
+            } catch (error) {
+                Swal.fire({
+                    title: 'خطا در هنگام خروج از حساب! لطفا دوباره تلاش کنید.',
+                    icon: 'error',
+                    confirmButtonText: 'تایید',
+                })
+            }
         }
     }
 

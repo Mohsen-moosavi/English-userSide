@@ -1,6 +1,6 @@
 {
-    "platform" : "node",
-    "app" : "classzaban",
-    "build" : "echo 'already built",
-    "start" : "node .next/standalone/server.js"
+  "platform": "node",
+  "app": "classzaban",
+  "build": "echo 'already built'",
+  "start": "node .next/standalone/server.js"
 }

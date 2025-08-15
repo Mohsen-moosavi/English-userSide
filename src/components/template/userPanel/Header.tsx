@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import Swal from 'sweetalert2'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import userProfile from '@images/user-profile.png'
 import useAppSelector from '@/hooks/useAppSelector'
 import toast from 'react-hot-toast'
@@ -18,6 +18,10 @@ function Header() {
     const {userAvatar,userName,userRole,loading} = useAppSelector(state=>state.user)
     const dispatch = useAppDispatch()
     const fileInputElm = useRef<HTMLInputElement>(null)
+
+    useEffect(()=>{
+        console.log('userAvatar================================>',userAvatar)
+    },[pathName])
 
     function selectFileHandler(e:React.ChangeEvent<HTMLInputElement>){
         if(e.target.files){

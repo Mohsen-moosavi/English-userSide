@@ -2,10 +2,11 @@
 import useAppDispatch from '@/hooks/useAppDispatch'
 import useAppSelector from '@/hooks/useAppSelector'
 import { addToBagThunk } from '@/redux/slice/user/userThunks'
-import { addToBagService } from '@/services/userServices'
 import { changeDateToPersianLanguage } from '@/utils/date.utils'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React from 'react'
+import toast from 'react-hot-toast'
 import Swal from 'sweetalert2'
 
 type PageProps = {
@@ -15,12 +16,17 @@ type PageProps = {
 }
 
 function AddToBag({ courseId, off, price }: PageProps) {
-    const { userCourses } = useAppSelector(state => state.user)
+    const { userCourses,userPhone } = useAppSelector(state => state.user)
     const dispatch = useAppDispatch()
+    const router = useRouter()
 
 
     
     function addToBagHandler(){
+        if(!userPhone){
+            toast.error("برای شرکت در دوره ابتدا باید وارد حساب کاربری خود شوید.")
+            return router.push('/login')        
+        }
         Swal.fire({
                     title:'آیا از اضافه کردن دوره به سبد خرید اطمینان دارید؟',
                     icon: 'warning',

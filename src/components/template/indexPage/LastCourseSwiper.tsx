@@ -2,7 +2,7 @@
 import React from 'react'
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
 import { TypeCourseBox } from '@/utils/types';
 import CourseBox from '@/components/modules/CourseBox';
 
@@ -11,6 +11,11 @@ function LastCourseSwiper({ courses }: { courses: TypeCourseBox[] }) {
         <Swiper
             slidesPerView={1}
             spaceBetween={10}
+            loop={true}
+            autoplay={{
+                delay:5000,
+                disableOnInteraction: false
+            }}
             // pagination={{
             //   clickable: true,
             // }}
@@ -28,7 +33,7 @@ function LastCourseSwiper({ courses }: { courses: TypeCourseBox[] }) {
                     spaceBetween: 20,
                 },
             }}
-            modules={[Pagination]}
+            modules={[Autoplay]}
             className="mySwiper"
         >
             {courses.map((course: TypeCourseBox) => (

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import LastCourseSwiper from './LastCourseSwiper';
 
-export const revalidate = 86400
+export const revalidate = 300
 
 async function LastCourses() {
 
@@ -11,7 +11,7 @@ async function LastCourses() {
 
   if (error) {
     return (
-      <></>
+      <>{error.message}</>
     )
   } else {
     return (
@@ -26,7 +26,7 @@ async function LastCourses() {
               </svg>
               <span className="text-custom-dark-blue font-bold text-md sm:text-xl">جدید ترین دوره ها</span>
             </div>
-            <Link href="/courses" className="flex items-center gap-x-2 text-sm sm:text-md">
+            <Link href="/courses" className="flex items-center text-custom-dark-blue sm:font-bold gap-x-2 text-sm sm:text-md">
               <span>مشاهده همه</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                 className="bi bi-arrow-left" viewBox="0 0 16 16">

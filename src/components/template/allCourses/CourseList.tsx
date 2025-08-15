@@ -3,7 +3,7 @@ import CourseBox from '@/components/modules/CourseBox'
 import Pagination from '@/components/modules/pagination'
 import useAppDispatch from '@/hooks/useAppDispatch'
 import useAppSelector from '@/hooks/useAppSelector'
-import { setOffset } from '@/redux/slice/allCourses/allCourseSlice'
+import { setCategory, setOffset, setSearchword } from '@/redux/slice/allCourses/allCourseSlice'
 import { searchCourseThunk } from '@/redux/slice/allCourses/allCourseThunks'
 import React, { useEffect } from 'react'
 
@@ -12,8 +12,18 @@ function CourseList() {
     const { courses, limit, offset, category, searchWord, loaded, coursesCount,paginatorChangerFlag } = useAppSelector(state => state.allCourse)
 
     useEffect(() => {
-        dispatch(searchCourseThunk({ limit, offset, category, searchWord }))
+        dispatch(setOffset(0))
+        dispatch(searchCourseThunk({ limit, offset:0, category, searchWord }))
+
     }, [paginatorChangerFlag])
+    
+    useEffect(()=>{
+        return ()=>{
+            dispatch(setOffset(0))
+            dispatch(setSearchword(''))
+            dispatch(setCategory(''))
+        }
+    },[])
 
     function paginationHandler(page: number) {
         dispatch(searchCourseThunk({ limit, offset: page * limit, category, searchWord }))

@@ -8,6 +8,7 @@ import { BookType } from '@/utils/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
+import BookFiles from '@/components/template/bookDetails/BookFiles';
 
 export const revalidate = 86400
 
@@ -62,8 +63,9 @@ async function page({ params }: PageProps) {
                                     </div>
                                     <p>{book?.shortDescription}</p>
                                     <Image src={book?.cover || ''} width={800} height={600} alt={book?.name || 'book cover'} />
-                                    <article id='article-info' dangerouslySetInnerHTML={{ __html: sanitizeHtml(book?.longDescription || '') }}>
+                                    <article id='article-info' className='book-longDescription' dangerouslySetInnerHTML={{ __html: sanitizeHtml(book?.longDescription || '') }}>
                                     </article>
+                                    <BookFiles files={book?.files || []}/>
 
                                 </div>
                             </article>

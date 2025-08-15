@@ -116,6 +116,7 @@ function CheckOtpForm() {
     return (
         <form className="w-full my-3 p-2 sm:p-4 flex flex-col items-center justify-start gap-y-4 mt-8 sm:mt-12 ">
             <h1 className="font-bold text-[#0000a3] msx-sm:text-[10px] text-center">کد ارسال شده به شماره {`${phoneParam?.slice(6)}***0${phoneParam?.slice(0, 3)}`} را وارد کنید.</h1>
+            <h3>(کد، به صورت تستی 11111 است)</h3>
             <div dir='ltr' className="flex items-center justify-center sm:gap-x-5 gap-x-2">
                 {inputs.map((value, index) => (
                     <input

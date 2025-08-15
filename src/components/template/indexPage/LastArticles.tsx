@@ -3,12 +3,14 @@ import React from 'react'
 import LastArticleSwiper from './LastArticleSwiper'
 import Link from 'next/link'
 
+export const revalidate = 300
+
 async function LastArticles() {
 
         const { responseData: article, error } = await getLastArticleService()
 
         if(error){
-            <></>
+            <>{error.message}</>
         }else{
             return (
               <section>
@@ -22,7 +24,7 @@ async function LastArticles() {
                           </svg>
                           <span className="text-custom-dark-blue font-bold text-md sm:text-xl">مقالات آموزشی</span>
                       </div>
-                      <Link href="/articles" className="flex items-center gap-x-2 text-sm sm:text-md">
+                      <Link href="/articles" className="flex items-center gap-x-2 text-sm text-custom-dark-blue sm:font-bold sm:text-md">
                           <span>مشاهده همه</span>
                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                               className="bi bi-arrow-left" viewBox="0 0 16 16">

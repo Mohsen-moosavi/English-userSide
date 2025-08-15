@@ -3,18 +3,29 @@ import BookBox from '@/components/modules/BookBox'
 import Pagination from '@/components/modules/pagination'
 import useAppDispatch from '@/hooks/useAppDispatch'
 import useAppSelector from '@/hooks/useAppSelector'
-import { setOffset } from '@/redux/slice/allBooks/allBookSlice'
+import { setCategory, setOffset, setSearchword } from '@/redux/slice/allBooks/allBookSlice'
 import { searchBookThunk } from '@/redux/slice/allBooks/allBooksThunk'
-import React, { useEffect} from 'react'
+import React, { useEffect } from 'react'
 
 function BooksList() {
 
     const dispatch = useAppDispatch()
-    const { books, limit, offset, category, searchWord, loaded, booksCount,paginatorChangerFlag } = useAppSelector(state => state.allBook)
+    const { books, limit, offset, category, searchWord, loaded, booksCount, paginatorChangerFlag } = useAppSelector(state => state.allBook)
 
     useEffect(() => {
-        dispatch(searchBookThunk({ limit, offset, category, searchWord }))
+        dispatch(setOffset(0))
+        dispatch(searchBookThunk({ limit, offset: 0, category, searchWord }))
+
     }, [paginatorChangerFlag])
+
+    useEffect(()=>{
+
+        return () => {
+            dispatch(setOffset(0))
+            dispatch(setSearchword(''))
+            dispatch(setCategory(''))
+        }
+    },[])
 
     function paginationHandler(page: number) {
         dispatch(searchBookThunk({ limit, offset: page * limit, category, searchWord }))

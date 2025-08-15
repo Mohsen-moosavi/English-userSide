@@ -3,7 +3,7 @@ import ArticleBox from '@/components/modules/ArticleBox'
 import Pagination from '@/components/modules/pagination'
 import useAppDispatch from '@/hooks/useAppDispatch'
 import useAppSelector from '@/hooks/useAppSelector'
-import { setOffset } from '@/redux/slice/allArticles/allArticlesSlice'
+import { setOffset, setSearchword } from '@/redux/slice/allArticles/allArticlesSlice'
 import { searchArticleThunk } from '@/redux/slice/allArticles/allArticlesThunk'
 import React, { useEffect } from 'react'
 
@@ -12,8 +12,17 @@ function ArticleList() {
     const { articles, limit, offset, searchWord, loaded, articlesCount,paginatorChangerFlag } = useAppSelector(state => state.allArticle)
 
     useEffect(() => {
-        dispatch(searchArticleThunk({ limit, offset, searchWord }))
+        dispatch(setOffset(0))
+        dispatch(searchArticleThunk({ limit, offset:0, searchWord }))
+
     }, [paginatorChangerFlag])
+
+    useEffect(()=>{
+        return ()=>{
+            dispatch(setOffset(0))
+            dispatch(setSearchword(''))
+        }
+    },[])
 
     function paginationHandler(page: number) {
         dispatch(searchArticleThunk({ limit, offset: page * limit, searchWord }))

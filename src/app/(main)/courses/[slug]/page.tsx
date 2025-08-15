@@ -7,12 +7,12 @@ import RelatedCourses from '@/components/template/courseDetails/RelatedCourses'
 import SessionList from '@/components/template/courseDetails/SessionList'
 import { getSingleCourseService } from '@/services/singleCourseService'
 import { sanitizeHtml } from '@/utils/sanitizeHtml'
-import Link from 'next/link'
 import React from 'react'
 import { CourseType } from '@/utils/types'
 import TagLink from '@/components/modules/TagLink'
 import AddToBag from '@/components/template/courseDetails/AddToBag'
-import SessionLink from '@/components/modules/SessionLink'
+import Image from 'next/image'
+import BookFile from '@/components/template/courseDetails/BookFile'
 
 
 export const revalidate = 86400
@@ -47,7 +47,7 @@ async function page({ params }: PageProps) {
                             </div>
 
                             <div>
-                                <video controls src={course?.introductionVideo} poster={course?.cover} className="w-[100%] shadow-center rounded-xl max-h-[336px]"></video>
+                                <video controls src={course?.introductionVideo} poster={course?.cover} className="w-[100%] shadow-center bg-black rounded-xl max-h-[336px]"></video>
                             </div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@ async function page({ params }: PageProps) {
                                             </svg>
                                             <div className="flex flex-col">
                                                 <span className="text-custom-dark-blue">مدرس :</span>
-                                                <Link href={`/teachers/${course?.user.id}`} className="text-custom-gray">{course?.user.name}</Link>
+                                                <span className="text-custom-gray">{course?.user.name}</span>
                                             </div>
                                         </div>
                                         <div className="flex items-center gap-x-2 shadow-center rounded-xl p-2">
@@ -115,7 +115,7 @@ async function page({ params }: PageProps) {
                                             </svg>
                                             <div className="flex flex-col">
                                                 <span className="text-custom-dark-blue">سطح دوره :</span>
-                                                <Link href={`/levels/${course?.level.id}`} className="text-custom-gray">{course?.level.name}</Link>
+                                                <span className="text-custom-gray">{course?.level.name}</span>
                                             </div>
                                         </div>
                                         <div className="flex items-center gap-x-2 shadow-center rounded-xl p-2">
@@ -141,10 +141,14 @@ async function page({ params }: PageProps) {
                                     </div>
 
                                     <div className="mt-4 rounded-xl shadow-center p-3">
-                                        <p className="max-sm:text-sm text-justify sm:mt-3 text-custom-gray">{course?.shortDescription}</p>
-                                        <article id="article-info" dangerouslySetInnerHTML={{ __html: sanitizeHtml(course?.longDescription || '') }}>
+                                        <p className="max-sm:text-sm text-justify sm:mt-3 text-custom-gray mb-8">{course?.shortDescription}</p>
+                                        <Image src={course?.cover||''} alt={course?.name||'cover'} className='w-full h-auto rounded-xl shadow-xl' width={400} height={300}/>
 
+                                       <div id="article-info">
+                                        <article  dangerouslySetInnerHTML={{ __html: sanitizeHtml(course?.longDescription || '') }}>
                                         </article>
+                                        <BookFile files={course?.bookFiles||[]}/>
+                                        </div> 
                                         <article className="mt-8">
                                             <div className="flex items-center">
                                                 <svg className="w-[17px] sm:w-[30px] bi bi-stars"
@@ -154,31 +158,8 @@ async function page({ params }: PageProps) {
                                                 </svg>
                                                 <span className="text-custom-dark-blue">جلسات دوره</span>
                                             </div>
-                                            {Number(course?.sessionCount) > 0 ? (
-                                                <div className="p-3 border-solid border-custom-dark-blue border-2 mt-2 rounded-xl">
-                                                    {course?.sessions.map((session, index) => (
-                                                        <div className={`py-2 ${index === 0 ? '' : 'border-t border-solid border-custom-dark-blue'}`} key={index}>
-                                                            {session.isFree ? (
-                                                                <SessionLink courseId={course.id} sessionId={session.id} number={index+1} sessionTime={session.time} sessionName={session.name}/>
-                                                            ) : (
-                                                                <div className="flex items-center gap-x-1 sm:gap-x-3 text-custom-dark-blue max-sm:text-[12px]">
-                                                                    <span className="border-2 border-solid border-custom-dark-blue rounded-full w-[20px] h-[20px] leading-[20px] sm:w-[40px] sm:h-[40px] text-center sm:leading-[40px] text-custom-dark-blue">1</span>
-                                                                    <h4>{session.name}</h4>
-                                                                    <span className="text-custom-gray mr-auto">{session.time}</span>
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-[20px] h-[20px]" fill="#166d91" viewBox="0 0 448 512">
-                                                                        <path d="M144 144l0 48 160 0 0-48c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192l0-48C80 64.5 144.5 0 224 0s144 64.5 144 144l0 48 16 0c35.3 0 64 28.7 64 64l0 192c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 256c0-35.3 28.7-64 64-64l16 0z" />
-                                                                    </svg>
-                                                                </div>
-                                                            )}
-                                                        </div>
-                                                    ))}
-                                                    <SessionList courseId={course?.id || 0} courseSlug={slug} sessionCount={course?.sessionCount || 0} courseName={course?.name || ""} />
-                                                </div>
-                                            ) : (
-                                                <div className='text-center my-3'>
-                                                    <span className='text-red-400'>هنوز جلسه ای برای این دوره منتشر نشده!!!</span>
-                                                </div>
-                                            )}
+                                            <SessionList defaultSessions={course?.sessions || []} courseId={course?.id || 0} courseSlug={slug} sessionCount={course?.sessionCount || 0} courseName={course?.name || ""} />
+
                                         </article>
                                         <article className="mt-8">
                                             <div>

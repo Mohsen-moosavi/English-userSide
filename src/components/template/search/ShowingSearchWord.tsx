@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react'
 function ShowingSearchWord() {
     const {searchWord,paginatorChangerFlag} = useAppSelector(state=>state.search)
     const [word, setWord] = useState('')
-
     useEffect(()=>{
         setWord(searchWord)
     },[paginatorChangerFlag])

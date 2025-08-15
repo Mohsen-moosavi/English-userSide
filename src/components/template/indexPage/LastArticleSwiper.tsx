@@ -3,13 +3,18 @@ import ArticleBox, { TypeArticleBox } from '@/components/modules/ArticleBox'
 import React from 'react'
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
 
 function LastArticleSwiper({ article }: { article: TypeArticleBox[] }) {
     return (
         <Swiper
             slidesPerView={1}
             spaceBetween={10}
+            loop={true}
+            autoplay={{
+                delay:5000,
+                disableOnInteraction: false
+            }}
             // pagination={{
             //   clickable: true,
             // }}
@@ -27,7 +32,7 @@ function LastArticleSwiper({ article }: { article: TypeArticleBox[] }) {
                     spaceBetween: 20,
                 },
             }}
-            modules={[Pagination]}
+            modules={[Autoplay]}
             className="mySwiper"
         >
             {article.map((article: TypeArticleBox) => (

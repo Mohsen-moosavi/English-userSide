@@ -56,11 +56,13 @@ npm run dev
 
 ## 📸 تصاویر محیط پروژه
 
-| صفحه اصلی | پنل کاربری |
-|-----------|------------|
-| ![screenshot1](./screenshots/home.png) | ![screenshot2](./screenshots/dashboard.png) |
-
-> لطفاً قبل از استفاده، تصاویر را در پوشه `/screenshots` قرار دهید.
+![screenshot2](https://github.com/Mohsen-moosavi/project-screenshots/blob/master/classzaban-frontuser/Screenshot%202025-08-14%20000928.png)
+![screenshot2](https://github.com/Mohsen-moosavi/project-screenshots/blob/master/classzaban-frontuser/Screenshot_14-8-2025_01245_localhost.jpeg)
+![screenshot2](https://github.com/Mohsen-moosavi/project-screenshots/blob/master/classzaban-frontuser/Screenshot_14-8-2025_01325_localhost.jpeg)
+![screenshot2](https://github.com/Mohsen-moosavi/project-screenshots/blob/master/classzaban-frontuser/Screenshot_14-8-2025_01440_localhost.jpeg)
+![screenshot2](https://github.com/Mohsen-moosavi/project-screenshots/blob/master/classzaban-frontuser/Screenshot_14-8-2025_01933_localhost.jpeg)
+![screenshot2](https://github.com/Mohsen-moosavi/project-screenshots/blob/master/classzaban-frontuser/Screenshot_14-8-2025_02018_localhost.jpeg)
+![screenshot2](https://github.com/Mohsen-moosavi/project-screenshots/blob/master/classzaban-frontuser/Screenshot_14-8-2025_02342_localhost.jpeg)
 
 ---
 
@@ -68,8 +70,8 @@ npm run dev
 
 برای هرگونه سوال یا همکاری:
 
-- ایمیل: `youremail@example.com`
-- لینکدین: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
+- ایمیل: `mohsen.moosavi.saee@example.com`
+- تلگرام: [https://t.me/Smms_saee](https://t.me/Smms_saee)
 
 ---
 

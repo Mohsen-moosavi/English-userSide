@@ -6,6 +6,14 @@ export type SessionsType = {
     isFree: boolean
 }
 
+export type BookFileType = {
+    id : number,
+    group : string,
+    link : string, 
+    name : string,
+    type : string
+}
+
 export type CommentsType = {
     id: number,
     content: string,
@@ -34,7 +42,8 @@ export type CourseType = {
     user: { id: number, name: string }
     sessions: SessionsType[],
     comments: CommentsType[],
-    tags:{name:string}[]
+    tags:{name:string}[],
+    bookFiles: BookFileType[]
 }
 
 
@@ -113,6 +122,7 @@ export type BookType = {
     forChildren: boolean,
     courses : {id:number, slug:string, cover:string,name:string}[],
     tags : {name:string}[],
+    files : BookFileType[]
 }
 
 export type SingleSessionType = {

@@ -1,7 +1,7 @@
 'use client'
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
 import BookBox from '@/components/modules/BookBox';
 import { TypeBookBox } from '@/utils/types';
 
@@ -13,6 +13,11 @@ function LastBookSwiper({books}:{books:TypeBookBox[]}) {
         // pagination={{
         //   clickable: true,
         // }}
+        loop={true}
+        autoplay={{
+          delay:5000,
+          disableOnInteraction: false
+        }}
         breakpoints={{
           640: {
             slidesPerView: 2,
@@ -27,10 +32,10 @@ function LastBookSwiper({books}:{books:TypeBookBox[]}) {
             spaceBetween: 20,
           },
         }}
-        modules={[Pagination]}
+        modules={[Autoplay]}
         className="mySwiper"
       >
-                    {books.map((book: TypeBookBox) => (
+                    {books?.map((book: TypeBookBox) => (
                   <SwiperSlide key={book.id} className='h-full'>
                       <BookBox {...book} />
                   </SwiperSlide>

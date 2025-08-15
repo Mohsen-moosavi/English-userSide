@@ -7,7 +7,12 @@ import SearchBox from '@/components/template/search/SearchBox'
 import ShowingSearchWord from '@/components/template/search/ShowingSearchWord'
 import React from 'react'
 
-function page() {
+type props = {
+    searchParams: Promise<{[key:string] : string}>
+}
+
+async function Page({searchParams}:props) {
+    const {searchword} = await searchParams;
     return (
         <main>
             <Breadcrumb links={[{ name: 'جستوجو', url: '/search' }]} />
@@ -34,4 +39,4 @@ function page() {
     )
 }
 
-export default page
+export default Page

@@ -1,11 +1,19 @@
 'use client'
+import useAppDispatch from '@/hooks/useAppDispatch'
 import useAppSelector from '@/hooks/useAppSelector'
+import { getUserInfoThunk } from '@/redux/slice/user/userThunks'
 import moment from 'moment-jalaali'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 function page() {
 
     const {userLevel ,userCreated_at, userPhone,userUsername,userScore} = useAppSelector(state=>state.user)
+
+    // const dispatch = useAppDispatch()
+
+    // useEffect(()=>{
+    //     dispatch(getUserInfoThunk())
+    // },[])
 
     return (
         <div className='grid sm:grid-cols-3 sm:gap-y-5 max-md:mt-25'>

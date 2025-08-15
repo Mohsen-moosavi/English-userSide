@@ -18,7 +18,7 @@ function CourseBox({name,slug,cover,levelName,levelId,score,teacherName,teacherI
             <Link href={`/courses/${slug}`}>
                 <h4 className="p-3 bg-[#166d91]/20 rounded-xl text-custom-dark-blue font-bold max-sm:text-sm">{name}</h4>
             </Link>
-            <Link href={`/levels/${levelId}`} className="absolute bottom-[-10px] bg-custom-dark-blue !text-white hover:!text-sky-500 rounded-xl px-3 h-[19px] leading-[20px] sm:h-[25px] sm:leading-[27px] left-[15%] max-sm:text-[10px] text-[12px]">{levelName}</Link>
+            <span className="absolute bottom-[-10px] bg-custom-dark-blue !text-white hover:!text-sky-500 rounded-xl px-3 h-[19px] leading-[20px] sm:h-[25px] sm:leading-[27px] left-[15%] max-sm:text-[10px] text-[12px]">{levelName}</span>
             <span className="absolute flex gap-x-1 items-center justify-center bottom-[-10px] right-[15%] bg-custom-dark-blue rounded-xl px-1 sm:px-2 h-[19px] leading-[20px] sm:h-[25px] sm:leading-[27px] max-sm:pt-1 text-white max-sm:text-[10px]">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="pb-1" viewBox="0 0 16 16">
                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
@@ -34,7 +34,7 @@ function CourseBox({name,slug,cover,levelName,levelId,score,teacherName,teacherI
                         <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h5.243c.122-.326.295-.668.526-1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v7.81c.353.23.656.496.91.783Q16 12.312 16 12V4a2 2 0 0 0-2-2z"/>
                     </svg>
                 </div>
-                <Link href={`/teachers/${teacherId}`} className="p-1 bg-[#166d91]/20 rounded-l-xl text-custom-dark-blue max-sm:text-sm">{teacherName}</Link>
+                <span className="p-1 bg-[#166d91]/20 rounded-l-xl text-custom-dark-blue max-sm:text-sm">{teacherName}</span>
             </div>
             {offPercent ? (
             <div className="flex flex-col items-end">

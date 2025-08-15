@@ -6,6 +6,7 @@ import { getSingleArticleService } from '@/services/singleArticleService';
 import { sanitizeHtml } from '@/utils/sanitizeHtml';
 import { ArticleType } from '@/utils/types';
 import moment from 'moment-jalaali';
+import Image from 'next/image';
 import React from 'react'
 
 type PageProps =
@@ -63,13 +64,13 @@ async function page({ params }: PageProps) {
                                         </div>
                                     </article>
 
-                                    <div className='p-3 rounded-xl shadow-[inset_0_0_4px_0_#000] bg-blue-500/10 mb-2'>
+                                    <div className='p-3 rounded-xl shadow-[inset_0_0_4px_0_#000] bg-blue-500/10 mb-8'>
                                         <span className='text-custom-dark-blue font-bold text-md block mb-3 pb-1 border-b-2 border-custom-dark-blue'>آنچه در ادامه خواهید خواند:</span>
                                     <div id='article-shortlinks' dangerouslySetInnerHTML={{ __html: sanitizeHtml(JSON.parse(article?.links||'').join(''))}}>
                                     </div>
                                     </div>
-                                    <p>{article?.shortDescription}</p>
-
+                                    <p className='mb-8'>{article?.shortDescription}</p>
+                                    <Image src={article?.cover||''} alt={article?.title||'cover'} width={400} height={300}/>
                                     <article id='article-info' dangerouslySetInnerHTML={{ __html: sanitizeHtml(article?.longDescription || '') }}>
                                     </article>
                                 </div>

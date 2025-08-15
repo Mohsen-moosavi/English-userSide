@@ -17,7 +17,7 @@ function Search() {
             return toast.error("لطفا یک عبارت صحیح وارد کنید!")
         }
         dispatch(setSearchword(searchWord))
-        router.push('/search')
+        router.push(`/search?searchword=${searchWord}`)
     }
 
     return (
